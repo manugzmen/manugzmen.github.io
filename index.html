@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan 12 Semanas — CEO+Builder 1% — Manu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap');
+  :root {
+    --bg:#0a0a0a;--bg2:#111111;--bg3:#181818;
+    --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
+    --text:#f0ece4;--text2:#888682;--text3:#555350;
+    --accent:#C8F135;--accent2:#8aad1e;
+    --p1:#ff6b35;--p2:#a78bfa;--p3:#34d399;
+    --p1bg:rgba(255,107,53,0.1);--p2bg:rgba(167,139,250,0.1);--p3bg:rgba(52,211,153,0.1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;}
+
+  /* HEADER */
+  .header{border-bottom:1px solid var(--border);padding:40px 40px 32px;position:relative;overflow:hidden;}
+  .header::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(200,241,53,0.08) 0%,transparent 70%);pointer-events:none;}
+  .header-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
+  .header-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(200,241,53,0.3);padding:4px 10px;border-radius:4px;}
+  .header-date{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text3);}
+  h1{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;line-height:1.1;color:var(--text);margin-bottom:8px;letter-spacing:-1px;}
+  h1 span{color:var(--accent);}
+  .header-sub{font-size:14px;color:var(--text2);max-width:600px;line-height:1.6;}
+
+  /* PUNTO DE PARTIDA */
+  .start-bar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .start-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
+  .progress-wrap{display:flex;align-items:center;gap:10px;flex:1;min-width:200px;}
+  .progress-track{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--p2);border-radius:2px;}
+  .progress-pct{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--p2);}
+  .start-items{display:flex;gap:8px;flex-wrap:wrap;}
+  .si{font-size:11px;padding:3px 10px;border-radius:3px;font-family:'IBM Plex Mono',monospace;}
+  .si-done{background:rgba(52,211,153,0.1);color:var(--p3);border:1px solid rgba(52,211,153,0.2);}
+  .si-now{background:rgba(200,241,53,0.1);color:var(--accent);border:1px solid rgba(200,241,53,0.2);}
+  .si-next{background:rgba(255,107,53,0.1);color:var(--p1);border:1px solid rgba(255,107,53,0.2);}
+
+  /* STACK */
+  .stack-bar{display:flex;gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
+  .stack-cell{background:var(--bg);padding:14px 20px;flex:1;}
+  .sc-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:3px;margin-bottom:5px;font-family:'IBM Plex Mono',monospace;}
+  .sb-ztm{background:rgba(167,139,250,0.12);color:var(--p2);border:1px solid rgba(167,139,250,0.2);}
+  .sb-karp{background:rgba(200,241,53,0.12);color:var(--accent);border:1px solid rgba(200,241,53,0.2);}
+  .sb-cs{background:rgba(255,107,53,0.12);color:var(--p1);border:1px solid rgba(255,107,53,0.2);}
+  .sb-book{background:rgba(52,211,153,0.12);color:var(--p3);border:1px solid rgba(52,211,153,0.2);}
+  .sc-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;}
+  .sc-desc{font-size:11px;color:var(--text2);line-height:1.4;}
+
+  /* RATIO */
+  .ratio-bar{display:flex;align-items:center;gap:16px;padding:12px 40px;border-bottom:1px solid var(--border);}
+  .ratio-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+  .ratio-track{flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;display:flex;}
+  .ratio-build{background:var(--accent);height:100%;}
+  .ratio-learn{background:var(--p2);height:100%;opacity:.5;}
+  .ratio-note{font-size:11px;color:var(--text2);}
+
+  /* MAIN */
+  .main{padding:0 40px 60px;}
+  .phase{margin-top:44px;}
+  .phase-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+  .phase-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 12px;border-radius:3px;text-transform:uppercase;letter-spacing:1px;font-weight:500;white-space:nowrap;}
+  .pb1{background:var(--p1bg);color:var(--p1);border:1px solid rgba(255,107,53,0.2);}
+  .pb2{background:var(--p2bg);color:var(--p2);border:1px solid rgba(167,139,250,0.2);}
+  .pb3{background:var(--p3bg);color:var(--p3);border:1px solid rgba(52,211,153,0.2);}
+  .phase-name{font-family:'Syne',sans-serif;font-size:21px;font-weight:700;color:var(--text);letter-spacing:-.5px;}
+  .phase-desc{font-size:12px;color:var(--text3);margin-left:auto;text-align:right;max-width:260px;line-height:1.4;}
+
+  /* WEEK */
+  .week{border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden;transition:border-color .2s;}
+  .week:hover{border-color:var(--border2);}
+  .week.open{border-color:rgba(200,241,53,0.3);}
+  .week-head{display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;user-select:none;}
+  .wk-num{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid;}
+  .wn1{color:var(--p1);border-color:rgba(255,107,53,0.35);background:var(--p1bg);}
+  .wn2{color:var(--p2);border-color:rgba(167,139,250,0.35);background:var(--p2bg);}
+  .wn3{color:var(--p3);border-color:rgba(52,211,153,0.35);background:var(--p3bg);}
+  .wk-focus{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--text);flex:1;line-height:1.3;}
+  .wk-tags{display:flex;gap:5px;flex-wrap:wrap;}
+  .wtag{font-size:10px;padding:2px 7px;border-radius:3px;font-family:'IBM Plex Mono',monospace;white-space:nowrap;}
+  .wt-cs{background:rgba(255,107,53,0.1);color:var(--p1);}
+  .wt-ztm{background:rgba(167,139,250,0.1);color:var(--p2);}
+  .wt-karp{background:rgba(200,241,53,0.1);color:var(--accent);}
+  .wt-build{background:rgba(52,211,153,0.1);color:var(--p3);}
+  .wt-book{background:rgba(136,134,130,0.15);color:var(--text2);}
+  .wk-chevron{font-size:10px;color:var(--text3);transition:transform .2s;margin-left:4px;}
+  .week.open .wk-chevron{transform:rotate(180deg);}
+
+  .week-body{display:none;padding:0 18px 18px;}
+  .week.open .week-body{display:block;}
+
+  .elon-quote{font-size:12px;color:var(--text3);font-style:italic;border-left:2px solid rgba(200,241,53,0.2);padding:7px 12px;margin-bottom:14px;line-height:1.6;}
+
+  /* NOTA DE CALIBRACIÓN */
+  .calibration{background:rgba(200,241,53,0.05);border:1px solid rgba(200,241,53,0.15);border-radius:6px;padding:10px 14px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start;}
+  .cal-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+  .cal-text{font-size:11px;color:var(--accent2);line-height:1.5;}
+
+  .pillars{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px;}
+  .pillar{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:11px 13px;}
+  .pillar-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+  .pillar-title{font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px;line-height:1.3;}
+  .pillar-desc{font-size:11px;color:var(--text2);line-height:1.5;}
+
+  .rhythm-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+  .rhythm-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+  .r-pill{font-size:11px;padding:3px 9px;border-radius:4px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-family:'IBM Plex Mono',monospace;}
+
+  .daily-title{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin:12px 0 7px;}
+  .check-row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+  .check-row:last-child{border-bottom:none;}
+  .checkbox{width:15px;height:15px;border:1px solid var(--border2);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+  .check-row.done .checkbox{background:var(--accent);border-color:var(--accent);}
+  .check-row.done .checkbox::after{content:'✓';font-size:9px;color:#000;font-weight:700;}
+  .check-row.done .check-text{color:var(--text3);text-decoration:line-through;}
+  .check-text{font-size:12px;color:var(--text2);}
+
+  .output-box{background:rgba(200,241,53,0.04);border:1px solid rgba(200,241,53,0.18);border-radius:6px;padding:11px 15px;margin-top:12px;}
+  .output-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+  .output-val{font-size:13px;color:var(--accent);font-weight:500;line-height:1.5;}
+
+  .footer{border-top:1px solid var(--border);padding:22px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .footer-left{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text3);}
+  .footer-quote{font-size:12px;color:var(--text3);font-style:italic;max-width:400px;text-align:right;}
+
+  @media(max-width:768px){
+    .header,.main,.footer,.ratio-bar,.start-bar{padding-left:16px;padding-right:16px;}
+    .pillars{grid-template-columns:1fr 1fr;}
+    .stack-bar{flex-direction:column;}
+    .phase-desc{display:none;}
+    h1{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="header-tag">Plan Operativo · v3 · Calibrado</div>
+    <div class="header-date" id="fecha"></div>
+  </div>
+  <h1>12 Semanas.<br><span>CEO + Builder 1%.</span></h1>
+  <p class="header-sub">Basado en The Book of Elon (Jorgenson, 2026). Punto de partida real: ZTM al 26%, HTML/CSS completo, CSS Grid en curso. JavaScript aún no. Karpathy desde S2. Construyes desde el día 1.</p>
+</div>
+
+<!-- PUNTO DE PARTIDA REAL -->
+<div class="start-bar">
+  <div class="start-label">Tu punto de partida hoy</div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" style="width:26%"></div></div>
+    <div class="progress-pct">ZTM 26%</div>
+  </div>
+  <div class="start-items">
+    <span class="si si-done">✓ HTML</span>
+    <span class="si si-done">✓ CSS</span>
+    <span class="si si-now">→ CSS Grid (en curso)</span>
+    <span class="si si-next">JS próximo</span>
+    <span class="si si-next">React después</span>
+    <span class="si si-next">Karpathy S2</span>
+  </div>
+</div>
+
+<!-- STACK -->
+<div class="stack-bar">
+  <div class="stack-cell">
+    <div class="sc-badge sb-ztm">S1–S12 · módulo semanal</div>
+    <div class="sc-name">ZTM Complete Web Dev 2026</div>
+    <div class="sc-desc">Ya vas al 26%. S1: terminas CSS Grid y arrancas JS. Cada semana siguiente: el módulo exacto que necesitas para construir esa semana.</div>
+  </div>
+  <div class="stack-cell">
+    <div class="sc-badge sb-karp">S2–S6 · diario 1.5h</div>
+    <div class="sc-name">Karpathy Neural Networks</div>
+    <div class="sc-desc">Ex-director de IA de Tesla. Deep learning desde primeros principios. Tronco de todo lo que construyes con IA. Arranca el lunes de S2.</div>
+  </div>
+  <div class="stack-cell">
+    <div class="sc-badge sb-cs">S1 · paralelo ligero</div>
+    <div class="sc-name">CS50 Harvard</div>
+    <div class="sc-desc">Solo para el "behind": memoria, funciones, cómo ejecuta el CPU. 30 min/día a 1.5x. No te atasques — es contexto, no curso principal.</div>
+  </div>
+  <div class="stack-cell">
+    <div class="sc-badge sb-book">1 libro/semana</div>
+    <div class="sc-name">Libros de Elon</div>
+    <div class="sc-desc">Thiel → Franklin → Tegmark → Kushner → Gordon → Frankl → Durant → MacAskill. 30–40 min nocturnos.</div>
+  </div>
+</div>
+
+<!-- RATIO -->
+<div class="ratio-bar">
+  <div class="ratio-label">Proporción semanal</div>
+  <div class="ratio-track">
+    <div class="ratio-build" style="width:70%"></div>
+    <div class="ratio-learn" style="width:30%"></div>
+  </div>
+  <div class="ratio-note">70% construir con Cursor · 30% aprender. No input sin output.</div>
+</div>
+
+<div class="main">
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-badge pb1">Fase 1 · S1–S3</span>
+      <span class="phase-name">CIERRA EL GAP DE JS, ABRE EL DE IA</span>
+      <span class="phase-desc">CSS Grid → JS → Karpathy. Primer agente real en S3.</span>
+    </div>
+    <div id="f1"></div>
+  </div>
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-badge pb2">Fase 2 · S4–S8</span>
+      <span class="phase-name">FULL STACK + IA EN PRODUCCIÓN</span>
+      <span class="phase-desc">React → Node → Next.js → Deploy. Karpathy termina S6. Voice Coach en S8.</span>
+    </div>
+    <div id="f2"></div>
+  </div>
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-badge pb3">Fase 3 · S9–S12</span>
+      <span class="phase-name">OPERA COMO EL 1%</span>
+      <span class="phase-desc">Auth + Pagos + PWA + Pitch + Visión. ONTI en producción completo.</span>
+    </div>
+    <div id="f3"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-left">Manu · 2026 · The Book of Elon · v3 Calibrado desde ZTM 26%</div>
+  <div class="footer-quote">"I don't care about optimism or pessimism. Fuck that. We're going to get it done." — Elon</div>
+</div>
+
+<script>
+document.getElementById('fecha').textContent = new Date().toLocaleDateString('es-MX',{day:'2-digit',month:'long',year:'numeric'});
+
+const W = [
+  // ─── FASE 1 ───────────────────────────────────────────────
+  {
+    id:1, phase:1,
+    focus: 'Cierra CSS Grid · Arranca JS · CS50 de fondo',
+    tags:[{t:'ZTM CSS→JS',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    quote: '"Make sure you understand the fundamental principles before you get into the leaves. Then there is something for them to hang on to." — Elon',
+    cal: '⚡ Punto de partida real: vas al 26% en ZTM, CSS Grid a la mitad. Esta semana cierras CSS Grid (2 días) y arrancas JS fundamentos (3 días). CS50 solo 30 min/día de fondo para entender el "behind" del código que Cursor escribe.',
+    cols:[
+      {l:'📚 Libro', t:'Zero to One — Thiel (caps 1–7)', d:'30–40 min noche. Una nota por capítulo: qué supuesto eliminas de ONTI o Appio. ¿Qué hace ONTI que nadie puede copiar?'},
+      {l:'🟣 ZTM', t:'CSS Grid completo (2 días) → JS: variables, funciones, arrays', d:'Cierra CSS Grid el martes. Miércoles–viernes: JS fundamentos en ZTM. Variables, funciones, arrays, objetos. Este es el idioma base de todo tu stack.'},
+      {l:'🔴 CS50', t:'Semanas 0–1 · 30 min/día · 1.5x', d:'No como curso principal — como contexto. Qué pasa en memoria cuando declaras una variable. Por qué una función tiene un scope. Esto hace que JS tenga sentido más profundo.'},
+      {l:'🔨 Build', t:'Idiot Index en Appio', d:'Un costo o proceso descompuesto hasta materias primas. ¿Cuánto cobras de más por supuesto heredado? 1h el jueves. Primeros principios en práctica.'}
+    ],
+    rhythm:['5:30 Meditación','6:00–7:00 ZTM (CSS Grid / JS)','9–12 Build Appio/ONTI con Cursor','4–4:30pm CS50 30min','8pm Zero to One 30min'],
+    checks:[
+      'CSS Grid: 18/18 lecciones completadas',
+      'ZTM JS: variables, funciones y scope entendidos',
+      'ZTM JS: arrays y objetos con práctica propia',
+      'CS50 Semana 0 vista (30 min/día)',
+      'Idiot Index aplicado a 1 proceso de Appio',
+      'Zero to One caps 1–7 leídos con notas'
+    ],
+    output: 'CSS Grid cerrado. JS arrancado. Idiot Index de Appio en papel.'
+  },
+  {
+    id:2, phase:1,
+    focus: 'JS avanzado + Karpathy arranca: el tronco de IA desde hoy',
+    tags:[{t:'ZTM JS Avanzado',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    quote: '"I am self-taught in rocketry. I just read a lot of books and talked to a lot of people." — Elon. Karpathy es tu libro de cohetes.',
+    cal: '🚀 Karpathy arranca el lunes. No esperes terminar ZTM JS para empezar — van en paralelo. JS en ZTM (1h/día) y Karpathy (1.5h/día) se complementan: ZTM te da el lenguaje, Karpathy te da el tronco de lo que construyes con ese lenguaje.',
+    cols:[
+      {l:'📚 Libro', t:'Autobiografía de Franklin + Isaacson caps 1–6', d:'Franklin en 2 días. Notas SOLO de sus métodos de aprendizaje — cómo se autodiseñó sin universidad. El primer founder autodidacta de la historia.'},
+      {l:'🟣 ZTM', t:'JS: async/await, fetch, promesas, DOM', d:'La capa que conecta tu código con APIs externas y con el browser. Sin esto no puedes llamar a OpenAI desde tu código. 1h/día.'},
+      {l:'🟢 Karpathy', t:'Lectures 1 y 2: micrograd + backpropagation', d:'youtube.com/@AndrejKarpathy. 1.5h/día. Lecture 1: construir una red neuronal desde cero. Lo que está detrás de cada agente que construyes con IA.'},
+      {l:'🔨 Build', t:'The Algorithm en ONTI', d:'5 pasos de Elon en papel para el onboarding de ONTI. Cuestiona, borra, simplifica, acelera, automatiza. 2h el viernes. ¿Qué pantalla eliminas?'}
+    ],
+    rhythm:['6:00–7:30 Karpathy','9–12 Build ONTI con Cursor','4–5pm ZTM JS async/DOM','8pm Franklin 30min'],
+    checks:[
+      'Karpathy Lecture 1 (micrograd) completa y entendida',
+      'Karpathy Lecture 2 (backprop) completa',
+      'ZTM JS: async/await y fetch dominados',
+      'ZTM JS: poder llamar una API externa desde código propio',
+      'The Algorithm aplicado en papel al onboarding de ONTI',
+      'Al menos 1 pantalla o paso del onboarding eliminado'
+    ],
+    output: 'Entiendes backprop. Puedes llamar una API desde JS. Un paso de ONTI eliminado.'
+  },
+  {
+    id:3, phase:1,
+    focus: 'React arranca + Karpathy se profundiza + primer agente en producción',
+    tags:[{t:'ZTM React',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'Build',c:'wt-build'}],
+    quote: '"If you don\'t make stuff, there is no stuff." — Elon. Esta semana el agente de Appio entra a producción.',
+    cal: '🔑 Esta semana converge todo: React (el idioma de ONTI), Karpathy (el tronco de IA) y tu primer agente real en un restaurante. No son cosas separadas — React es cómo construyes la UI, Karpathy explica qué hace el motor por abajo.',
+    cols:[
+      {l:'📚 Libro', t:'Zero to One caps 8–14 (terminar)', d:'Cap 9 "If You Build It" es crítico para ONTI. Una hoja: ¿cómo distribuyes ONTI sin ads? Distribución = tecnología.'},
+      {l:'🟣 ZTM', t:'React: componentes, props, state, hooks', d:'useState, useEffect, cómo fluyen los datos. 1h/día. ONTI vive en React/Next.js — este es tu idioma de construcción de aquí en adelante.'},
+      {l:'🟢 Karpathy', t:'Lectures 3 y 4: embeddings + transformers', d:'Aquí entiendes QUÉ hace ChatGPT y por qué funciona. Directamente aplicable a los agentes de Appio. 1.5h/día.'},
+      {l:'🔨 Build', t:'Agente de WhatsApp en Appio — en producción', d:'Bot que responde preguntas frecuentes de restaurantes. Usa la API de OpenAI + JS que aprendiste en S2. No perfecto — funcionando en 1 restaurante real.'}
+    ],
+    rhythm:['6:00–7:30 Karpathy','9–12 Build agente Appio','4–5pm ZTM React','8pm Zero to One'],
+    checks:[
+      'Karpathy Lectures 3 y 4 completas (embeddings + attention)',
+      'Entender qué es un embedding y un attention head',
+      'ZTM React: componentes, props y state dominados',
+      'ZTM React: hooks useState y useEffect con práctica',
+      'Agente de WhatsApp deployado en 1 restaurante real de Appio',
+      'Zero to One terminado con notas de distribución'
+    ],
+    output: 'Agente de WhatsApp en producción. Entiendes transformers. React arrancado.'
+  },
+
+  // ─── FASE 2 ───────────────────────────────────────────────
+  {
+    id:4, phase:2,
+    focus: 'React avanzado + RAG en producción + GPT desde cero',
+    tags:[{t:'ZTM React Avanzado',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'Build',c:'wt-build'}],
+    quote: '"Often we were told something was impossible, but once we broke it down into its constituent elements, we could solve it." — Elon',
+    cal: '📈 Karpathy entra en su semana más densa: GPT desde cero. Al mismo tiempo, React avanzado en ZTM te da las herramientas para construir la UI de ONTI. Estos dos mundos convergen cuando construyes el agente mejorado de Appio.',
+    cols:[
+      {l:'📚 Libro', t:'Life 3.0 — Tegmark caps 1–4', d:'30 min/día. Para hablar con VCs de IA con autoridad real, no con buzzwords. Elon: "compelling guide to the future of intelligence."'},
+      {l:'🟣 ZTM', t:'React: context, reducers, React Router, fetch en React', d:'Cómo manejar estado global, múltiples páginas y llamadas a APIs dentro de React. ONTI con 28 rutas necesita esto. 1h/día.'},
+      {l:'🟢 Karpathy', t:'Lectures 5 y 6: GPT from scratch', d:'La semana más densa de Karpathy. Construir un GPT desde cero. Si entiendes esto, entiendes todo lo que usas en Cursor y en tus agentes de Appio.'},
+      {l:'🔨 Build', t:'Agente de Appio con RAG', d:'Mejora el agente de S3: busca en el historial del restaurante para responder mejor. Salto de MVP a producto real. Usa lo de async/await de S2.'}
+    ],
+    rhythm:['6:00–7:30 Karpathy','9–12 Build RAG Appio','4–5pm ZTM React avanzado','8pm Life 3.0'],
+    checks:[
+      'Karpathy Lectures 5 y 6 completas (GPT from scratch)',
+      'RAG funcionando en agente de Appio',
+      'ZTM React: React Router con múltiples páginas',
+      'ZTM React: fetch de API dentro de componente React',
+      'Life 3.0 caps 1–4 leídos',
+      'Poder explicar qué hace RAG a alguien no técnico'
+    ],
+    output: 'RAG funcionando en Appio. Entiendes GPT desde los átomos. React Router dominado.'
+  },
+  {
+    id:5, phase:2,
+    focus: 'Node.js + bases de datos + Karpathy cierra',
+    tags:[{t:'ZTM Node+DB',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'Libro',c:'wt-book'}],
+    quote: '"A factory moving at twice the speed of another factory is basically equivalent to two factories." — Elon',
+    cal: '🏁 Esta semana Karpathy termina. Es un hito grande — después de esto entiendes el tronco de toda la IA que usas. Al mismo tiempo, Node.js y Supabase te dan el backend que ONTI necesita para guardar usuarios, rutas y progreso.',
+    cols:[
+      {l:'📚 Libro', t:'Masters of Doom — David Kushner', d:'Lee en 3 días. Notas de la RUTINA de Carmack — cómo la velocidad aplastó a todos los competidores. Carmack = Elon del videojuego.'},
+      {l:'🟣 ZTM', t:'Node.js + Express + APIs REST + Supabase', d:'Cómo construir un servidor, una API y conectar una base de datos. ONTI necesita esto para las 28 rutas de usuario, historial de meditación y progreso. 1h/día.'},
+      {l:'🟢 Karpathy', t:'Lecture 7: tokenización + fine-tuning · SERIE COMPLETA', d:'Última semana de Karpathy. Cómo se fine-tunea un modelo para un uso específico. Directamente aplicable a personalizar agentes para restaurantes.'},
+      {l:'🔨 Build', t:'Dashboard de velocidad + Supabase en ONTI', d:'¿Cuántos deploys/semana hoy? Instala tracking. Y conecta Supabase a ONTI para guardar el primer dato de usuario real.'}
+    ],
+    rhythm:['6:00–7:30 Karpathy + ZTM','9–12 Build ONTI con Supabase','8pm Masters of Doom'],
+    checks:[
+      'Karpathy Lecture 7 completa — SERIE TERMINADA ✓',
+      'Masters of Doom terminado',
+      'ZTM Node.js + Express: servidor básico funcionando',
+      'ZTM Supabase: base de datos conectada a ONTI',
+      'Primer dato de usuario guardado en ONTI',
+      'Sistema de tracking de velocidad instalado (deploys/semana)'
+    ],
+    output: 'KARPATHY TERMINADO. Supabase en ONTI guardando datos. Velocidad medida.'
+  },
+  {
+    id:6, phase:2,
+    focus: 'Next.js completo: entiendes tu propio stack de producción',
+    tags:[{t:'ZTM Next.js',c:'wt-ztm'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    quote: '"One reason SpaceX moved so quickly is I made both engineering AND spending decisions in one brain. My brain trusts itself." — Elon',
+    cal: '🎯 ONTI vive en Next.js. Esta semana dejas de usar Next.js como caja negra y lo entiendes desde adentro. Server components, App Router, SSR — cuando entiendes esto, tus decisiones de arquitectura cambian completamente.',
+    cols:[
+      {l:'📚 Libro', t:'Life 3.0 caps 5–8 (terminar)', d:'Escenarios de IA a futuro. ¿Dónde encajan AutoAsistente y ONTI en 10 años? Una página de respuesta que usas en tu pitch.'},
+      {l:'🟣 ZTM', t:'Next.js completo: App Router, SSR, Server Components, API Routes', d:'ONTI vive aquí. 1.5h/día. Esta semana entiendes por qué Next.js y no otro framework, y cómo optimizarlo para performance.'},
+      {l:'🟣 ZTM', t:'Anthropic Prompt Engineering Guide', d:'docs.anthropic.com — gratis. Eres el chief engineer de tus agentes. Esto es ventaja técnica real sobre cualquier competidor en el espacio de wellness IA.'},
+      {l:'🔨 Build', t:'3 decisiones técnico-financieras de ONTI', d:'Feature sí/no. Infraestructura compras/construyes. Integración vale/no vale. Una hoja por decisión con primeros principios. Tómalas solo.'}
+    ],
+    rhythm:['6:00–7:30 ZTM Next.js','9–12 Build ONTI','4pm Prompt Engineering Guide','8pm Life 3.0'],
+    checks:[
+      'Life 3.0 terminado',
+      'ZTM Next.js App Router dominado',
+      'ZTM Next.js: Server Components vs Client Components claro',
+      'Prompt Engineering Guide de Anthropic leído completo',
+      '3 decisiones técnico-financieras de ONTI documentadas',
+      'Al menos 1 decisión cambia el roadmap de ONTI'
+    ],
+    output: 'Entiendes tu propio stack de producción. 3 decisiones que cambian el roadmap.'
+  },
+  {
+    id:7, phase:2,
+    focus: 'TypeScript + CI/CD: la fábrica que construye la fábrica',
+    tags:[{t:'ZTM TS+Deploy',c:'wt-ztm'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    quote: '"The biggest epiphany I had building Tesla is what really matters is the machine that builds the machines — the factory." — Elon',
+    cal: '⚙️ Esta semana dejas de hacer deploys manuales. CI/CD significa que cada vez que guardas código, el sistema lo testea y lo sube solo. Esto dobla tu velocidad efectiva sin agregar horas.',
+    cols:[
+      {l:'📚 Libro', t:"Structures: Why Things Don't Fall Down — Gordon", d:'Elon: "Really good primer on structural design." No es sobre edificios — es sobre qué hace que las cosas aguanten carga bajo escala. Metáfora directa para arquitectura de software.'},
+      {l:'🟣 ZTM', t:'TypeScript básico: tipos, interfaces, generics', d:'ONTI usa TypeScript. El editor atrapa errores antes de que corras el código. 1h/día. Un bug en producción de ONTI es más caro que 1h de TypeScript.'},
+      {l:'🟣 ZTM', t:'CI/CD: GitHub Actions + Vercel deploy automático', d:'Cada push → tests → deploy. Reduce tiempo de deploy a minutos. Automatiza lo que hacías a mano. Elon: automate last, but do automate.'},
+      {l:'🔨 Build', t:'CI/CD configurado + proceso de desarrollo documentado', d:'Deploy automatizado en ONTI. Proceso completo documentado: idea→código→deploy. Meta: tiempo de deploy a la mitad vs S1.'}
+    ],
+    rhythm:['6:00–7:30 ZTM TypeScript','9–12 Build + CI/CD','4pm ZTM GitHub Actions','8pm Structures'],
+    checks:[
+      'Structures leído completo',
+      'ZTM TypeScript: tipos básicos e interfaces dominados',
+      'CI/CD configurado: push → deploy automático en ONTI',
+      'TypeScript habilitado en al menos 1 módulo de ONTI',
+      'Proceso de desarrollo documentado visualmente',
+      'Tiempo de deploy medido y reducido vs S1'
+    ],
+    output: 'Deploy automatizado. TypeScript activo. Proceso documentado. Velocidad medida.'
+  },
+  {
+    id:8, phase:2,
+    focus: 'Voice Coach prototipado: todo converge en una feature',
+    tags:[{t:'ZTM Audio+APIs',c:'wt-ztm'},{t:'Build',c:'wt-build'}],
+    quote: '"Failure is a side effect of iteration. If you can\'t tell me the four ways you fucked something up before you got it right, you weren\'t doing the real work." — Elon',
+    cal: '🎤 El Voice Coach es el feature más diferenciador de ONTI — y requiere todo lo aprendido: JS async (S2), React (S3-S4), APIs (S5), Next.js (S6). Esta semana no aprendes nada nuevo — aplicas todo.',
+    cols:[
+      {l:'📚 Integrar', t:'Notas S1–S7 (sin libro nuevo)', d:'1 hora el lunes. ¿Qué entiendes ahora del código, IA y tu empresa que no entendías hace 7 semanas? Escríbelo en un párrafo. Este documento vale más que cualquier curso.'},
+      {l:'🟣 ZTM', t:'Web APIs: Audio, MediaRecorder, WebSockets', d:'Grabar audio desde el browser, transcribir y recibir respuesta en tiempo real. Base técnica del Voice Coach. 1h/día en los primeros 3 días.'},
+      {l:'🟣 ZTM', t:'Testing básico con Vitest/Jest', d:'Cómo escribir tests para que el Voice Coach no se rompa al iterar. 1h. Un bug en el coach en producción es más caro que 1h de tests ahora.'},
+      {l:'🔨 Build', t:'Voice Coach prototipo 0: graba → transcribe → responde', d:'Graba audio en ONTI → Whisper transcribe → Claude responde. No bonito. Loop completo funcionando esta semana.'}
+    ],
+    rhythm:['6:00–8:00 Build Voice Coach','9–12 Construcción ONTI','4pm ZTM Audio APIs','8pm Integración y notas'],
+    checks:[
+      'Documento de integración S1–S7 escrito',
+      'ZTM Web Audio API: grabación desde browser funcionando',
+      'Whisper conectado: audio → texto',
+      'Claude API conectado: texto → respuesta',
+      'Loop completo: graba → transcribe → responde',
+      'Al menos 1 test escrito para el voice coach'
+    ],
+    output: 'Voice Coach: graba → transcribe → responde. Loop completo en ONTI.'
+  },
+
+  // ─── FASE 3 ───────────────────────────────────────────────
+  {
+    id:9, phase:3,
+    focus: 'Auth + Pagos + propósito como tecnología',
+    tags:[{t:'ZTM Auth+Stripe',c:'wt-ztm'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    quote: '"If your motives are pure and greater than yourself, the world will conspire in its subtle ways to help you." — Naval (foreword del libro)',
+    cal: '💳 Esta semana ONTI puede cobrar. Auth + Stripe = usuarios reales con suscripción real. Cuando esto funciona, ya tienes un negocio — no un prototipo.',
+    cols:[
+      {l:'📚 Libro', t:"Man's Search for Meaning — Viktor Frankl", d:'Lee en 2 días. Frankl + Singer + Elon = mismo principio desde 3 ángulos. El propósito no es motivacional — es estructural. Aplica directo a la misión de ONTI.'},
+      {l:'🟣 ZTM', t:'Autenticación con Clerk o Auth.js', d:'Registro, login, sesiones, perfil de usuario. ONTI necesita esto para las 28 rutas emocionales — sin auth no hay personalización. 1h/día.'},
+      {l:'🟣 ZTM', t:'Pagos con Stripe en Next.js', d:'Suscripciones, webhooks, checkout. Esta semana ONTI puede cobrar $30/mes. 1h/día. Stripe + Next.js es directo con la documentación oficial.'},
+      {l:'🔨 Build', t:'One-pager de ONTI versión Elon', d:'Una hoja: Problema → Por qué ahora → Solución → Escala → Por qué tú. Si no cabe en una hoja, no lo entiendes suficiente. Esta hoja es tu VC pitch comprimido.'}
+    ],
+    rhythm:['6:00 Build ONTI','9–12 Construcción','4pm ZTM Auth + Stripe','8pm Frankl'],
+    checks:[
+      "Man's Search for Meaning leído completo",
+      'Auth funcionando en ONTI: registro, login, sesión',
+      'Stripe conectado en test mode con suscripción mensual',
+      'Usuario puede registrarse, suscribirse y acceder a contenido',
+      'One-pager de ONTI terminado (1 hoja)',
+      'Pitch oral de 90 segundos practicado 5 veces'
+    ],
+    output: 'ONTI puede registrar usuarios y cobrar $30/mes. One-pager para VCs.'
+  },
+  {
+    id:10, phase:3,
+    focus: 'Performance + PWA + historia como ventaja',
+    tags:[{t:'ZTM Performance+PWA',c:'wt-ztm'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    quote: '"Learn the lessons of history so we do not repeat the mistakes of the past." — Elon',
+    cal: '📱 ONTI es PWA — tiene que funcionar como app nativa en el celular de una Yulie de 45 años en CDMX. Performance y PWA esta semana convierten tu web app en producto real.',
+    cols:[
+      {l:'📚 Libro', t:'The Lessons of History — Durant (releer)', d:'Ya lo leíste. Réélo en 2 días con una sola pregunta: ¿qué ciclo histórico vive el mercado de bienestar mental y restaurantes-tech en México ahora mismo?'},
+      {l:'🟣 ZTM', t:'Performance: Lighthouse, lazy loading, optimización de imágenes', d:'Lighthouse score de ONTI > 90. Cada punto de performance es retención de usuario. 1h/día los primeros 3 días.'},
+      {l:'🟣 ZTM', t:'PWA: Service Workers, manifest, offline, notificaciones push', d:'ONTI instalable en celular como app nativa. Funcionar sin internet. Notificaciones diarias de meditación. Esto multiplica el retention.'},
+      {l:'🔨 Build', t:'Agente de calificación de leads en Appio', d:'Califica leads entrantes de restaurantes y agenda demos automáticamente. Libera 5–10h/semana para ONTI. ¿Qué hace un SDR humano que puede hacer IA?'}
+    ],
+    rhythm:['6:00 Build ONTI','9–12 Construcción','4pm ZTM Performance + PWA','8pm Durant'],
+    checks:[
+      'The Lessons of History releído con ojos de fundador',
+      'Lighthouse score de ONTI > 90 en mobile',
+      'ONTI instalable como PWA en celular',
+      'Service Worker: ONTI funciona offline (al menos parcialmente)',
+      'Notificaciones push configuradas',
+      'Agente de calificación de leads funcionando en Appio'
+    ],
+    output: 'ONTI como PWA instalable en celular. Agente de leads liberando tu tiempo.'
+  },
+  {
+    id:11, phase:3,
+    focus: 'Estado global + ruta completa en producción + pitch filmado',
+    tags:[{t:'ZTM State',c:'wt-ztm'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    quote: '"I try to take the set of actions most likely to improve the probability that the future will be good." — Elon',
+    cal: '🌍 Esta semana ONTI tiene su primera ruta completa funcionando en producción. No un prototipo — producto real que una Yulie puede usar hoy. Y tu pitch de VC ya está grabado.',
+    cols:[
+      {l:'📚 Libro', t:'What We Owe the Future — MacAskill', d:'Elon: "This is a close match for my philosophy." ONTI no vende meditación — vende reducir sufrimiento humano a escala generacional. Este libro te da ese lenguaje.'},
+      {l:'🟣 ZTM', t:'Estado global con Zustand o Context avanzado', d:'Para ONTI con 28 rutas: cómo manejar el estado del usuario (ruta activa, progreso, historial) sin que se rompa entre sesiones. 1h/día.'},
+      {l:'📹 Pitch', t:'10 repeticiones filmadas del pitch de ONTI', d:'Grábate 10 veces esta semana. Objetivo: 3 min con misión + tracción + defensibilidad técnica + visión de civilización. Escúchate cada vez y ajusta.'},
+      {l:'🔨 Build', t:'ONTI: ruta "sanar-madre" end-to-end en producción', d:'Pain point → ruta → meditación → voice coach. Una ruta completa funcionando para usuarios reales. Lanzar > perfeccionar.'}
+    ],
+    rhythm:['6:00 Build ONTI','9–12 Construcción total','4pm ZTM Estado global','8pm MacAskill','Vie/Sáb: pitch x5 cada día'],
+    checks:[
+      'What We Owe the Future leído',
+      'ZTM Zustand: estado global funcionando en ONTI',
+      'ONTI ruta "sanar-madre" completa end-to-end en producción',
+      'Al menos 1 usuario real (no tú) que completa la ruta',
+      'Video de pitch de 3 min grabado',
+      'Pitch practicado 10 veces filmadas'
+    ],
+    output: 'ONTI ruta completa en producción con usuarios reales. Pitch de 3 min que funciona.'
+  },
+  {
+    id:12, phase:3,
+    focus: 'Semana de integración: el Elon de 35 que ahora eres',
+    tags:[{t:'Build',c:'wt-build'},{t:'Integración',c:'wt-book'}],
+    quote: '"I don\'t care about optimism or pessimism. Fuck that. We\'re going to get it done." — Elon',
+    cal: '🏆 No hay curso esta semana. No hay libro nuevo. Solo construir, medir y firmar el contrato de los próximos 3 meses. Las semanas de integración son las más importantes — aquí el conocimiento se convierte en identidad.',
+    cols:[
+      {l:'📚 Integrar', t:'Releer highlights de S1–S11', d:'No libro nuevo. Abre tus notas. 1 hora el lunes. ¿Qué destruiste? ¿Qué construiste? ¿Qué piensas diferente sobre código, IA, tu empresa y tú mismo?'},
+      {l:'⚡ Auditoría', t:'3 preguntas de Elon', d:'(1) ¿Qué construí en 12 semanas que no existía? (2) ¿Cuál es mi velocidad hoy vs S1? (3) ¿Qué haría Elon a los 35 con exactamente lo que tengo en mis manos ahora?'},
+      {l:'📊 Medir', t:'Velocidad S12 vs S1 en números', d:'Deploys/semana. Features en producción. Agentes funcionando. Usuarios reales. MRR. Números — no narrativa. La verdad está en los números.'},
+      {l:'🔨 Build', t:'Roadmap S13–S24: tu nuevo contrato', d:'Una hoja. 3 cosas que construyes. 3 habilidades que profundizas. MRR objetivo. Usuarios objetivo. Fecha de siguiente ronda. Firma con fecha de hoy.'}
+    ],
+    rhythm:['6:00–9:00 Build sin interrupciones','1h integración y notas','Viernes: roadmap completo + firma'],
+    checks:[
+      'Highlights S1–S11 releídos y conectados',
+      '3 preguntas de Elon respondidas honestamente y por escrito',
+      'Velocidad S12 vs S1 medida en números concretos',
+      'MRR actual y de ONTI documentados',
+      'Roadmap S13–S24 en una hoja firmada con fecha',
+      'Una frase que describe quién eres que no existía hace 12 semanas'
+    ],
+    output: 'Roadmap S13–S24 firmado. Una frase que describe quién eres ahora.'
+  }
+];
+
+const pIds={1:'f1',2:'f2',3:'f3'};
+const wCls={1:'wn1',2:'wn2',3:'wn3'};
+
+function tw(id){document.getElementById('w'+id).classList.toggle('open');}
+function tc(el){el.classList.toggle('done');save();}
+function save(){
+  const s={};
+  document.querySelectorAll('.check-row').forEach(r=>{s[r.dataset.key]=r.classList.contains('done');});
+  try{localStorage.setItem('elon_v3',JSON.stringify(s));}catch(e){}
+}
+function load(){
+  try{
+    const s=JSON.parse(localStorage.getItem('elon_v3')||'{}');
+    document.querySelectorAll('.check-row').forEach(r=>{if(s[r.dataset.key])r.classList.add('done');});
+  }catch(e){}
+}
+
+W.forEach(w=>{
+  const tags=w.tags.map(t=>`<span class="wtag ${t.c}">${t.t}</span>`).join('');
+  const cols=w.cols.map(c=>`
+    <div class="pillar">
+      <div class="pillar-label">${c.l}</div>
+      <div class="pillar-title">${c.t}</div>
+      <div class="pillar-desc">${c.d}</div>
+    </div>`).join('');
+  const checks=w.checks.map((c,i)=>`
+    <div class="check-row" data-key="w${w.id}_c${i}" onclick="tc(this)">
+      <div class="checkbox"></div>
+      <span class="check-text">${c}</span>
+    </div>`).join('');
+  const rhythm=w.rhythm.map(r=>`<span class="r-pill">${r}</span>`).join('');
+  const calHtml=w.cal?`<div class="calibration"><div class="cal-icon">📍</div><div class="cal-text">${w.cal}</div></div>`:'';
+
+  document.getElementById(pIds[w.phase]).innerHTML+=`
+    <div class="week" id="w${w.id}">
+      <div class="week-head" onclick="tw(${w.id})">
+        <div class="wk-num ${wCls[w.phase]}">S${w.id}</div>
+        <div class="wk-focus">${w.focus}</div>
+        <div class="wk-tags">${tags}</div>
+        <div class="wk-chevron">▼</div>
+      </div>
+      <div class="week-body">
+        <div class="elon-quote">${w.quote}</div>
+        ${calHtml}
+        <div class="pillars">${cols}</div>
+        <div class="rhythm-label">Ritmo diario sugerido</div>
+        <div class="rhythm-row">${rhythm}</div>
+        <div class="daily-title">Checklist — haz click al completar cada item</div>
+        ${checks}
+        <div class="output-box">
+          <div class="output-label">Output no negociable de la semana</div>
+          <div class="output-val">${w.output}</div>
+        </div>
+      </div>
+    </div>`;
+});
+
+load();
+document.getElementById('w1').classList.add('open');
+</script>
+</body>
+</html>
