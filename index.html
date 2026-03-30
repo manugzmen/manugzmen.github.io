@@ -17,7 +17,6 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;}
-
   .header{border-bottom:1px solid var(--border);padding:40px 40px 32px;position:relative;overflow:hidden;}
   .header::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(200,241,53,0.07) 0%,transparent 70%);pointer-events:none;}
   .header-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;}
@@ -27,20 +26,29 @@
   h1 span{color:var(--accent);}
   .header-sub{font-size:14px;color:var(--text2);max-width:600px;line-height:1.6;}
 
+  /* ZTM PROGRESS TRACKER */
+  .ztm-tracker{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 40px;}
+  .ztm-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+  .ztm-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;}
+  .ztm-target{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);}
+  .ztm-weeks{display:flex;gap:4px;flex-wrap:wrap;}
+  .ztm-week{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:44px;}
+  .ztm-bar-wrap{width:100%;height:32px;background:var(--bg3);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--border);}
+  .ztm-bar-fill{background:var(--p2);border-radius:2px;transition:height .3s;opacity:.7;}
+  .ztm-bar-now{background:var(--accent);opacity:1;}
+  .ztm-pct{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);}
+  .ztm-sw{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);}
+
   /* START BAR */
-  .start-bar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 40px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .start-bar{background:var(--bg);border-bottom:1px solid var(--border);padding:12px 40px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
   .start-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
-  .progress-wrap{display:flex;align-items:center;gap:10px;flex:1;min-width:180px;}
-  .progress-track{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
-  .progress-fill{height:100%;background:var(--p2);border-radius:2px;}
-  .progress-pct{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--p2);}
-  .start-items{display:flex;gap:7px;flex-wrap:wrap;}
+  .start-items{display:flex;gap:6px;flex-wrap:wrap;}
   .si{font-size:10px;padding:3px 9px;border-radius:3px;font-family:'IBM Plex Mono',monospace;}
   .si-done{background:rgba(52,211,153,0.1);color:var(--p3);border:1px solid rgba(52,211,153,0.2);}
   .si-now{background:rgba(200,241,53,0.1);color:var(--accent);border:1px solid rgba(200,241,53,0.2);}
   .si-next{background:rgba(255,107,53,0.08);color:var(--p1);border:1px solid rgba(255,107,53,0.15);}
 
-  /* REFS LEGEND */
+  /* REFS */
   .refs-bar{border-bottom:1px solid var(--border);padding:16px 40px;}
   .refs-title{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
   .refs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
@@ -93,7 +101,9 @@
   .wn1{color:var(--p1);border-color:rgba(255,107,53,0.35);background:var(--p1bg);}
   .wn2{color:var(--p2);border-color:rgba(167,139,250,0.35);background:var(--p2bg);}
   .wn3{color:var(--p3);border-color:rgba(52,211,153,0.35);background:var(--p3bg);}
-  .wk-focus{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--text);flex:1;line-height:1.3;}
+  .wk-center{flex:1;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .wk-focus{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--text);line-height:1.3;}
+  .wk-progress{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 8px;border-radius:3px;background:rgba(167,139,250,0.1);color:var(--p2);border:1px solid rgba(167,139,250,0.2);white-space:nowrap;flex-shrink:0;}
   .wk-tags{display:flex;gap:4px;flex-wrap:wrap;}
   .wtag{font-size:9px;padding:2px 6px;border-radius:3px;font-family:'IBM Plex Mono',monospace;white-space:nowrap;text-transform:uppercase;letter-spacing:.3px;}
   .wt-cs{background:rgba(255,107,53,0.1);color:var(--p1);}
@@ -103,18 +113,24 @@
   .wt-book{background:rgba(136,134,130,0.12);color:var(--text2);}
   .wk-chevron{font-size:10px;color:var(--text3);transition:transform .2s;margin-left:4px;flex-shrink:0;}
   .week.open .wk-chevron{transform:rotate(180deg);}
-
   .week-body{display:none;padding:0 18px 18px;}
   .week.open .week-body{display:block;}
-
   .elon-quote{font-size:12px;color:var(--text3);font-style:italic;border-left:2px solid rgba(200,241,53,0.2);padding:7px 12px;margin-bottom:12px;line-height:1.6;}
-
   .cal-box{background:rgba(200,241,53,0.04);border:1px solid rgba(200,241,53,0.12);border-radius:6px;padding:9px 13px;margin-bottom:12px;font-size:11px;color:var(--accent2);line-height:1.5;}
+
+  /* ZTM SECTION HIGHLIGHT */
+  .ztm-section{background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.18);border-radius:6px;padding:10px 14px;margin-bottom:10px;}
+  .ztm-sec-title{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--p2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;}
+  .ztm-sec-pct{font-size:10px;color:var(--p2);opacity:.7;}
+  .ztm-sec-modules{display:flex;flex-direction:column;gap:4px;}
+  .ztm-module{font-size:11px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+  .ztm-module::before{content:'→';color:var(--p2);flex-shrink:0;margin-top:1px;font-size:10px;}
+  .ztm-module strong{color:var(--text);font-weight:500;}
 
   /* PILLARS */
   .pillars{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px;}
   .pillar{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:11px 13px;}
-  .pillar-top{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+  .pillar-top{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
   .pillar-badge{font-size:9px;padding:2px 7px;border-radius:3px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;}
   .pb-ztm{background:rgba(167,139,250,0.12);color:var(--p2);}
   .pb-karp{background:rgba(200,241,53,0.12);color:var(--accent);}
@@ -127,9 +143,10 @@
 
   /* CS50 BLOCK */
   .cs50-block{background:rgba(255,107,53,0.04);border:1px solid rgba(255,107,53,0.15);border-radius:6px;padding:10px 14px;margin-bottom:10px;}
-  .cs50-title{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--p1);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
-  .cs50-sessions{display:flex;gap:6px;flex-wrap:wrap;}
-  .cs50-pill{font-size:11px;padding:4px 10px;border-radius:4px;background:var(--bg3);border:1px solid rgba(255,107,53,0.2);color:var(--text2);}
+  .cs50-title{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--p1);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+  .cs50-sessions{display:flex;flex-direction:column;gap:4px;}
+  .cs50-pill{font-size:11px;padding:4px 0;border-bottom:1px solid rgba(255,107,53,0.1);color:var(--text2);line-height:1.4;}
+  .cs50-pill:last-child{border-bottom:none;}
 
   /* RHYTHM */
   .rhythm-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
@@ -145,7 +162,6 @@
   .check-row.done .checkbox::after{content:'✓';font-size:9px;color:#000;font-weight:700;}
   .check-row.done .check-text{color:var(--text3);text-decoration:line-through;}
   .check-text{font-size:12px;color:var(--text2);line-height:1.4;}
-
   .output-box{background:rgba(200,241,53,0.04);border:1px solid rgba(200,241,53,0.18);border-radius:6px;padding:11px 14px;margin-top:10px;}
   .output-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
   .output-val{font-size:13px;color:var(--accent);font-weight:500;line-height:1.5;}
@@ -155,12 +171,14 @@
   .footer-quote{font-size:12px;color:var(--text3);font-style:italic;max-width:420px;text-align:right;}
 
   @media(max-width:768px){
-    .header,.main,.footer,.ratio-bar,.start-bar,.refs-bar{padding-left:16px;padding-right:16px;}
+    .header,.main,.footer,.ratio-bar,.start-bar,.refs-bar,.ztm-tracker{padding-left:16px;padding-right:16px;}
     .pillars{grid-template-columns:1fr;}
     .refs-grid{grid-template-columns:1fr 1fr;}
     .stack-bar{flex-direction:column;}
     .phase-desc{display:none;}
     h1{font-size:26px;}
+    .ztm-weeks{gap:2px;}
+    .ztm-week{min-width:36px;}
   }
 </style>
 </head>
@@ -168,57 +186,63 @@
 
 <div class="header">
   <div class="header-top">
-    <div class="header-tag">Plan Operativo · v4 · Calibrado</div>
+    <div class="header-tag">Plan Operativo · v5 · ZTM Orden Real</div>
     <div class="header-date" id="fecha"></div>
   </div>
   <h1>12 Semanas.<br><span>CEO + Builder 1%.</span></h1>
-  <p class="header-sub">Basado en The Book of Elon (Eric Jorgenson, 2026). Punto de partida: ZTM 26%, HTML/CSS completo, CSS Grid en curso. JS no iniciado. CS50 3 sesiones/semana como teoría. Karpathy desde S2.</p>
+  <p class="header-sub">Basado en The Book of Elon (Eric Jorgenson, 2026). ZTM calibrado al orden real del curso: 7–10% por semana. CS50 3 sesiones/semana. Karpathy desde S2.</p>
+</div>
+
+<!-- ZTM PROGRESS TRACKER -->
+<div class="ztm-tracker">
+  <div class="ztm-top">
+    <div class="ztm-label">ZTM — progresión semana a semana (meta: 7–10%/semana)</div>
+    <div class="ztm-target">Meta: 27% → 100% en 12 semanas</div>
+  </div>
+  <div class="ztm-weeks" id="ztm-bars"></div>
 </div>
 
 <!-- PUNTO DE PARTIDA -->
 <div class="start-bar">
-  <div class="start-label">Hoy · ZTM</div>
-  <div class="progress-wrap">
-    <div class="progress-track"><div class="progress-fill" style="width:26%"></div></div>
-    <div class="progress-pct">26%</div>
-  </div>
+  <div class="start-label">Hoy · ZTM 27%</div>
   <div class="start-items">
     <span class="si si-done">✓ HTML</span>
-    <span class="si si-done">✓ CSS</span>
-    <span class="si si-now">→ CSS Grid</span>
-    <span class="si si-next">JS próximo</span>
-    <span class="si si-next">React S3</span>
+    <span class="si si-done">✓ CSS + Flexbox</span>
+    <span class="si si-now">→ CSS Grid 5 (casi listo)</span>
+    <span class="si si-next">JavaScript próximo</span>
+    <span class="si si-next">DOM Manipulation S2</span>
+    <span class="si si-next">React S6</span>
     <span class="si si-next">Karpathy S2</span>
   </div>
 </div>
 
-<!-- REFERENCIAS DETALLADAS -->
+<!-- REFERENCIAS -->
 <div class="refs-bar">
   <div class="refs-title">Dónde encontrar cada recurso</div>
   <div class="refs-grid">
     <div class="ref-card">
       <span class="ref-badge rb-cs">CS50</span>
-      <div class="ref-name">CS50: Introduction to Computer Science</div>
-      <div class="ref-detail">Autor: Prof. David J. Malan · Harvard University<br>Plataforma: edX.org (gratis para auditar)<br>También en: cs50.harvard.edu<br>Formato: Videos + Problem Sets + Lectures<br>Duración total: ~100h (tú haces 3 sesiones/semana de ~45 min)</div>
-      <div class="ref-link">edx.org → busca "CS50" · cs50.harvard.edu</div>
+      <div class="ref-name">CS50: Intro to Computer Science</div>
+      <div class="ref-detail">Autor: Prof. David J. Malan · Harvard University<br>Plataforma: edX.org (gratis) · cs50.harvard.edu<br>Formato: Videos + Problem Sets · ~100h total<br>Tú haces 3 sesiones/semana de 45 min (Lun/Mié/Vie)<br>También en YouTube: busca "CS50 2024 Lecture 0"</div>
+      <div class="ref-link">cs50.harvard.edu · edx.org → busca CS50</div>
     </div>
     <div class="ref-card">
       <span class="ref-badge rb-ztm">ZTM</span>
       <div class="ref-name">Complete Web Developer 2026</div>
-      <div class="ref-detail">Autor: Andrei Neagoie · Zero to Mastery Academy<br>Plataforma: zerotomastery.io (ya tienes acceso)<br>Formato: Videos + ejercicios + proyectos<br>Duración total: ~65h · Tú ya vas al 26%<br>No lo ves lineal — cada semana el módulo exacto que necesitas</div>
+      <div class="ref-detail">Autor: Andrei Neagoie · Zero to Mastery Academy<br>Plataforma: zerotomastery.io (ya tienes acceso)<br>Progresión: 7–10% por semana → 27% ahora → 100% en S12<br>Orden real del curso visible en tus screenshots<br>No lo ves lineal — solo el módulo de esa semana</div>
       <div class="ref-link">zerotomastery.io → My Courses → Complete Web Dev</div>
     </div>
     <div class="ref-card">
       <span class="ref-badge rb-karp">Karpathy</span>
       <div class="ref-name">Neural Networks: Zero to Hero</div>
-      <div class="ref-detail">Autor: Andrej Karpathy (ex-Director de IA en Tesla)<br>Plataforma: YouTube — completamente gratis<br>Canal: youtube.com/@AndrejKarpathy<br>Playlist: "Neural Networks: Zero to Hero"<br>Lectures: 7 videos · ~12h total · 1.5h/día en S2–S6<br>Lecture 1: "The spelled-out intro to neural networks"</div>
+      <div class="ref-detail">Autor: Andrej Karpathy (ex-Director IA en Tesla)<br>Plataforma: YouTube — 100% gratis<br>Canal: youtube.com/@AndrejKarpathy<br>Playlist: "Neural Networks: Zero to Hero" (7 lectures, ~12h)<br>L1: "The spelled-out intro to neural networks..." (~2h 25min)<br>Arranca semana 2 — 1.5h/día lunes a viernes</div>
       <div class="ref-link">youtube.com/@AndrejKarpathy → Playlists → Zero to Hero</div>
     </div>
     <div class="ref-card">
       <span class="ref-badge rb-book">Libros</span>
-      <div class="ref-name">Lista completa de libros del plan</div>
-      <div class="ref-detail">S1: Zero to One — Peter Thiel (Kindle/físico)<br>S2: Autobiografía de Franklin (libre en Project Gutenberg) + Isaacson<br>S3: Zero to One terminar<br>S4: Life 3.0 — Max Tegmark (Kindle/físico)<br>S5: Masters of Doom — David Kushner<br>S6: Life 3.0 terminar<br>S7: Structures — J.E. Gordon<br>S8: Notas propias (sin libro nuevo)<br>S9: Man's Search for Meaning — Viktor Frankl<br>S10: The Lessons of History — Will y Ariel Durant<br>S11: What We Owe the Future — William MacAskill<br>S12: Releer highlights propios</div>
-      <div class="ref-link">Kindle · Amazon MX · gutenberg.org (Franklin gratis)</div>
+      <div class="ref-name">Libros de la lista de Elon</div>
+      <div class="ref-detail">S1: Zero to One — Peter Thiel (Kindle ~$200 MXN)<br>S2: Autobiografía Franklin (gratis: gutenberg.org) + Isaacson (~$250 MXN)<br>S3: Zero to One terminar<br>S4: Life 3.0 — Max Tegmark (~$250 MXN)<br>S5: Masters of Doom — David Kushner (~$200 MXN)<br>S6: Life 3.0 terminar<br>S7: Structures — J.E. Gordon (~$180 MXN)<br>S9: Man's Search for Meaning — Frankl (~$150 MXN)<br>S10: Lessons of History — Durant (releer)<br>S11: What We Owe the Future — MacAskill (~$250 MXN)</div>
+      <div class="ref-link">Kindle Amazon MX · gutenberg.org (Franklin gratis)</div>
     </div>
   </div>
 </div>
@@ -226,24 +250,24 @@
 <!-- STACK -->
 <div class="stack-bar">
   <div class="stack-cell">
-    <div class="sc-badge sb-cs">3 sesiones/semana · toda la guía</div>
-    <div class="sc-name">CS50 Harvard — Teoría</div>
-    <div class="sc-desc">Lunes, miércoles y viernes · 45 min cada sesión. Teoría de computación: memoria, algoritmos, estructuras de datos. Complementa perfectamente la práctica de ZTM.</div>
+    <div class="sc-badge sb-ztm">7–10%/semana · orden real del curso</div>
+    <div class="sc-name">ZTM Complete Web Dev — Práctica</div>
+    <div class="sc-desc">CSS Grid → JS → DOM → Advanced JS → Node → React → Next.js → TS → Auth → PWA. El orden exacto del curso, progresando 7–10% por semana.</div>
   </div>
   <div class="stack-cell">
-    <div class="sc-badge sb-ztm">S1–S11 · módulo semanal</div>
-    <div class="sc-name">ZTM Complete Web Dev — Práctica</div>
-    <div class="sc-desc">Ya vas al 26%. Cada semana un módulo específico según lo que construyes. No lo ves lineal — lo usas como manual quirúrgico.</div>
+    <div class="sc-badge sb-cs">3 sesiones/semana · Lun Mié Vie</div>
+    <div class="sc-name">CS50 Harvard — Teoría</div>
+    <div class="sc-desc">45 min por sesión. Teoría que ZTM no explica: memoria, algoritmos, estructuras de datos. Cada semana las 3 lectures específicas que conectan con lo que construyes.</div>
   </div>
   <div class="stack-cell">
     <div class="sc-badge sb-karp">S2–S6 · 1.5h diarias</div>
     <div class="sc-name">Karpathy Neural Networks — IA</div>
-    <div class="sc-desc">7 lectures · youtube.com/@AndrejKarpathy. El tronco de todo lo que construyes con IA. Ex-Director de IA de Tesla.</div>
+    <div class="sc-desc">7 lectures · youtube.com/@AndrejKarpathy. Tronco de IA. Ex-Director de IA de Tesla. Arranca semana 2.</div>
   </div>
   <div class="stack-cell">
     <div class="sc-badge sb-book">1 libro/semana · 30–40 min/noche</div>
     <div class="sc-name">Libros de la lista de Elon</div>
-    <div class="sc-desc">Todos recomendados explícitamente por Elon en The Book of Elon. Disponibles en Kindle o Amazon MX.</div>
+    <div class="sc-desc">Todos recomendados explícitamente en The Book of Elon (Jorgenson, 2026). 30–40 min cada noche antes de dormir.</div>
   </div>
 </div>
 
@@ -254,7 +278,7 @@
     <div class="ratio-build" style="width:70%"></div>
     <div class="ratio-learn" style="width:30%"></div>
   </div>
-  <div class="ratio-note">70% construir con Cursor · 30% aprender (CS50 + ZTM + Karpathy). No input sin output.</div>
+  <div class="ratio-note">70% construir con Cursor · 30% aprender. No input sin output.</div>
 </div>
 
 <div class="main">
@@ -262,7 +286,7 @@
     <div class="phase-header">
       <span class="phase-badge pb1">Fase 1 · S1–S3</span>
       <span class="phase-name">CIERRA EL GAP DE JS, ABRE EL DE IA</span>
-      <span class="phase-desc">CSS Grid → JS fundamentos → React. Karpathy S2. Agente en S3.</span>
+      <span class="phase-desc">CSS Grid → JS → DOM → Karpathy S2 → agente S3.</span>
     </div>
     <div id="f1"></div>
   </div>
@@ -270,7 +294,7 @@
     <div class="phase-header">
       <span class="phase-badge pb2">Fase 2 · S4–S8</span>
       <span class="phase-name">FULL STACK + IA EN PRODUCCIÓN</span>
-      <span class="phase-desc">React avanzado → Node → Next.js → TS → Voice Coach.</span>
+      <span class="phase-desc">Node → APIs → React → Next.js → TS → Voice Coach.</span>
     </div>
     <div id="f2"></div>
   </div>
@@ -278,343 +302,465 @@
     <div class="phase-header">
       <span class="phase-badge pb3">Fase 3 · S9–S12</span>
       <span class="phase-name">OPERA COMO EL 1%</span>
-      <span class="phase-desc">Auth + Pagos + PWA + Pitch + Visión de civilización.</span>
+      <span class="phase-desc">Auth + Stripe + PWA + State + Pitch. ONTI en producción.</span>
     </div>
     <div id="f3"></div>
   </div>
 </div>
 
 <div class="footer">
-  <div class="footer-left">Manu · 2026 · The Book of Elon (Jorgenson) · v4</div>
+  <div class="footer-left">Manu · 2026 · The Book of Elon (Jorgenson) · v5 ZTM Real Order</div>
   <div class="footer-quote">"I don't care about optimism or pessimism. Fuck that. We're going to get it done." — Elon Musk</div>
 </div>
 
 <script>
 document.getElementById('fecha').textContent = new Date().toLocaleDateString('es-MX',{day:'2-digit',month:'long',year:'numeric'});
 
+// ZTM progress bars
+const ztmPcts = [27,36,44,52,60,68,76,84,90,93,96,100];
+const ztmContainer = document.getElementById('ztm-bars');
+ztmPcts.forEach((pct,i) => {
+  const isNow = i === 0;
+  const div = document.createElement('div');
+  div.className = 'ztm-week';
+  div.innerHTML = `
+    <div class="ztm-bar-wrap" title="S${i+1}: ${pct}%">
+      <div class="ztm-bar-fill${isNow?' ztm-bar-now':''}" style="height:${pct}%"></div>
+    </div>
+    <div class="ztm-pct">${pct}%</div>
+    <div class="ztm-sw">S${i+1}</div>`;
+  ztmContainer.appendChild(div);
+});
+
 const W = [
   // ══════════════════ FASE 1 ══════════════════
   {
-    id:1, phase:1,
-    focus:'Cierra CSS Grid · Arranca JS · CS50 arranca',
-    tags:[{t:'ZTM CSS→JS',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    id:1, phase:1, pct:'27% → 36%',
+    focus:'Cierra CSS Grid · Arranca JavaScript · CS50 Lecture 0',
+    tags:[{t:'ZTM JS',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
     quote:'"Make sure you understand the fundamental principles (the trunk and big branches) before you get into the leaves — then there is something for them to hang on to." — Elon',
-    cal:'📍 Punto de partida exacto: CSS Grid a la mitad en ZTM. Ciérralo en 2 días (son 13 lecciones restantes aprox, ~40 min). Luego arranca JS en ZTM. CS50 arranca este lunes — 3 sesiones de 45 min esta semana para la teoría que ZTM no da.',
-    cs50:['Lunes: CS50 Lecture 0 — Scratch (45 min) · Qué es un algoritmo, representación binaria, abstracción','Miércoles: CS50 Lecture 1 — C (45 min) · Variables, tipos, loops, condiciones — la misma lógica que JS','Viernes: CS50 Lecture 2 — Arrays (45 min) · Memoria, strings, cómo se almacenan los datos'],
+    cal:'📍 Estás en CSS Grid 5 — quedan ~5 lecciones (~25 min). Ciérralo el lunes. Después: "Career of a Web Developer" (45 min, dale skip rápido o vélo a 2x) → arranca sección JavaScript completa (2h 40m). Meta: llegar al 36% al final de la semana.',
+    ztm:{
+      title:'ZTM esta semana — de 27% a 36%',
+      pct:'27% → 36%',
+      modules:[
+        {bold:'CSS Grid 5 hasta el final', desc:'(~25 min) · Ciérralo el lunes. Lecciones restantes: Optional Exercise, CSS Layout, Solution Nav Bar 1 y 2. Puedes saltarte el exercise opcional si ya entiendes el concepto.'},
+        {bold:'Career of a Web Developer', desc:'(45 min total) · Véla a 2x o dale skip rápido. Es motivacional, no técnica. Lo importante: "Web Developer Roadmap" — te da el mapa de todo ZTM.'},
+        {bold:'JavaScript — sección completa', desc:'(2h 40m) · Secciones exactas del curso: Introduction to Javascript → What Is Javascript? → Variables → Control Flow → Loops → Functions → DOM Manipulation empieza. Meta: llegar al inicio de DOM al finalizar la semana.'}
+      ]
+    },
+    cs50:['Lunes: CS50 Lecture 0 — Scratch (45 min) · cs50.harvard.edu/x/2024/weeks/0 · Qué es un algoritmo, representación binaria, abstracción. Verás que CS50 explica el "por qué" de lo que ZTM te enseña a usar.','Miércoles: CS50 Lecture 1 — C (45 min) · Variables, tipos de datos, loops, condiciones en C. Misma lógica que JavaScript — solo diferente sintaxis. Elon estudió C antes que cualquier otro lenguaje.','Viernes: CS50 Lecture 2 — Arrays (45 min) · Memoria, strings, cómo se almacenan los datos en RAM. Después de esto entenderás por qué JavaScript tiene tipos como String y Array.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'Zero to One — Peter Thiel',ref:'Autor: Peter Thiel (co-fundador PayPal, Palantir) · Editorial: Crown Business · Disponible: Kindle Amazon MX (~$200 MXN) · 224 páginas',d:'Caps 1–7 esta semana (30–40 min/noche). Una nota por capítulo: qué supuesto eliminas de ONTI o Appio. Pregunta central del cap 1: ¿qué hace ONTI que nadie más puede copiar?'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'CSS Grid completo → JS: variables, funciones, arrays',ref:'Plataforma: zerotomastery.io → Complete Web Dev 2026 · Sección: "CSS Grid + CSS Layout" (terminar, ~40 min) → Sección: "JavaScript: The Complete Picture" (arrancar)',d:'Cierra CSS Grid el martes. Miércoles–viernes: variables, funciones, scope, arrays, objetos en ZTM JS. Este es el idioma base de todo tu stack — ONTI, Appio, Cursor, todo.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'Idiot Index en Appio',ref:'Concepto de The Book of Elon (Jorgenson, 2026) · Aplica directamente esta semana',d:'Elige un costo o proceso de Appio. Descomponlo hasta materias primas: ¿qué pagas de más por supuesto heredado de la industria? 1h el jueves. Escríbelo en una hoja. Este es primeros principios en práctica.'},
-      {badge:'pb-cs',bl:'🔴 CS50',t:'3 sesiones: Lectures 0, 1 y 2',ref:'Prof. David J. Malan · Harvard · edx.org (gratis) · cs50.harvard.edu · Videos en YouTube: "CS50 2024"',d:'Ve las lectures a 1.5x. No hagas los problem sets esta semana — enfócate en entender los conceptos. CS50 explica el "behind" que ZTM asume que ya sabes: por qué una variable ocupa memoria, qué es un loop en términos de CPU.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'Zero to One — Peter Thiel (caps 1–7)',ref:'Peter Thiel · Crown Business · Kindle Amazon MX ~$200 MXN · 224 páginas · Co-fundador PayPal y Palantir',d:'30–40 min cada noche. Una nota por capítulo: qué supuesto eliminas de ONTI o Appio. Pregunta central del cap 1: ¿qué verdad importante sabes tú que casi nadie más sabe? Esa respuesta define la ventaja de ONTI.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'Idiot Index en Appio',ref:'Concepto de The Book of Elon, cap. "First-Principles Thinking" · Jorgenson, 2026',d:'Elige un costo o proceso de Appio. Descomponlo hasta materias primas: ¿qué pagas de más por supuesto heredado de la industria? 1h el jueves. Una hoja en papel. Esto es primeros principios aplicados.'}
     ],
-    rhythm:['5:30 Meditación','6:00–7:00 ZTM (CSS Grid → JS)','9–12 Build Appio/ONTI con Cursor','Lun/Mié/Vie 4:30–5:15 CS50','8pm Zero to One 30min'],
+    rhythm:['5:30 Meditación','6:00–7:30 ZTM JavaScript','9–12 Build Appio/ONTI con Cursor','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Zero to One 30min'],
     checks:[
-      'CSS Grid: todas las lecciones completadas en ZTM',
-      'ZTM JS: variables, funciones y scope — puedo explicarlos',
-      'ZTM JS: arrays y objetos con al menos 1 ejercicio propio',
-      'CS50 Lecture 0 (Scratch) vista — entiendo qué es un algoritmo',
-      'CS50 Lecture 1 (C) vista — entiendo variables y loops',
-      'CS50 Lecture 2 (Arrays) vista — entiendo cómo se almacena data',
+      'CSS Grid: todas las lecciones completadas ✓',
+      'Career of Web Dev: "Web Developer Roadmap" visto',
+      'ZTM JS: Variables y tipos de datos (puedo explicarlos)',
+      'ZTM JS: Control Flow — if/else, comparaciones',
+      'ZTM JS: Loops — for, while, forEach',
+      'ZTM JS: Functions — declaración, scope, return',
+      'CS50 Lecture 0 vista (algoritmos y binario)',
+      'CS50 Lecture 1 vista (C — variables y loops)',
+      'CS50 Lecture 2 vista (Arrays y memoria)',
       'Idiot Index de 1 proceso de Appio en papel',
-      'Zero to One caps 1–7 con una nota cada uno'
+      'Zero to One caps 1–7 leídos con una nota cada uno'
     ],
-    output:'CSS Grid cerrado. JS arrancado. CS50 teoría Lectures 0–2. Idiot Index de Appio.'
+    output:'ZTM al 36%. JS fundamentos dominados. CS50 Lectures 0–2 vistas. Idiot Index de Appio.'
   },
 
   {
-    id:2, phase:1,
-    focus:'JS avanzado · Karpathy Lectures 1–2 · CS50 Lecture 3',
-    tags:[{t:'ZTM JS',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    id:2, phase:1, pct:'36% → 44%',
+    focus:'DOM Manipulation · Advanced JS · Karpathy Lecture 1 arranca',
+    tags:[{t:'ZTM DOM+JS',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
     quote:'"I am self-taught in rocketry. I just read a lot of books and talked to a lot of people." — Elon. Karpathy es tu libro de cohetes de IA.',
-    cal:'🚀 Karpathy arranca el lunes de esta semana. Lecture 1 se llama "The spelled-out intro to neural networks and backpropagation: building micrograd" — dura ~2.5 horas. La ves en 2 sesiones de 1.5h los primeros 2 días. CS50 continúa 3 sesiones — esta semana Lecture 3 sobre algoritmos.',
-    cs50:['Lunes: CS50 Lecture 3 — Algorithms (45 min) · Búsqueda, ordenamiento, Big O — cómo medir eficiencia de código','Miércoles: CS50 Lecture 4 — Memory (45 min) · Punteros, heap, stack — por qué tu app de ONTI puede tener memory leaks','Viernes: CS50 Lecture 5 — Data Structures (45 min) · Listas, árboles, hash tables — la base de cómo Supabase guarda tus datos'],
+    cal:'🚀 KARPATHY ARRANCA HOY. Lecture 1 se llama "The spelled-out intro to neural networks and backpropagation: building micrograd" — dura ~2h 25min. Véla en 2 sesiones de 1.5h. Al mismo tiempo, DOM Manipulation en ZTM es la sección que conecta JavaScript con el browser — directamente aplicable a ONTI.',
+    ztm:{
+      title:'ZTM esta semana — de 36% a 44%',
+      pct:'36% → 44%',
+      modules:[
+        {bold:'DOM Manipulation', desc:'(1h 23m) · Secciones exactas del curso: Document Object Model → DOM Selectors → DOM Events → Callback Functions. Sin DOM no puedes actualizar la UI de ONTI cuando el usuario hace algo.'},
+        {bold:'Advanced JavaScript Part 1', desc:'· Closures, Scope avanzado, Higher Order Functions (map, filter, reduce). Estas son las funciones que más vas a usar en React y en cualquier código moderno de ONTI.'},
+        {bold:'ES6 + Modern JavaScript', desc:'· Arrow functions, Template literals, Destructuring, Spread operator, Modules. ZTM llama a esta sección "ES6+" o "Modern JavaScript". Todo Next.js usa esta sintaxis.'}
+      ]
+    },
+    cs50:['Lunes: CS50 Lecture 3 — Algorithms (45 min) · cs50.harvard.edu/x/2024/weeks/3 · Búsqueda, ordenamiento, Big O. Notación O(n) explica por qué tu agente de Appio puede volverse lento si no optimizas.','Miércoles: CS50 Lecture 4 — Memory (45 min) · Punteros, heap, stack, memory leaks. Después de esto entenderás por qué React tiene "re-renders" y por qué importa no crear objetos innecesarios.','Viernes: CS50 Lecture 5 — Data Structures (45 min) · Listas enlazadas, árboles, hash tables. La base de cómo Supabase almacena y encuentra los datos de tus usuarias de ONTI.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'Autobiografía de Benjamin Franklin + Isaacson caps 1–6',ref:'Autobiografía de Franklin: gratis en gutenberg.org (busca "Autobiography of Benjamin Franklin") · Isaacson: "Benjamin Franklin: An American Life" — Walter Isaacson, Simon & Schuster, Kindle ~$250 MXN',d:'Autobiografía completa en 2 días (es corta, ~150 págs). Luego Isaacson caps 1–6. Notas SOLO de sus métodos de aprendizaje — cómo se autodiseñó sin universidad. Franklin = el primer founder autodidacta de la historia.'},
-      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 1: "micrograd" — red neuronal desde cero',ref:'Autor: Andrej Karpathy (ex-Director de IA en Tesla, ex-investigador OpenAI) · YouTube: youtube.com/@AndrejKarpathy · Playlist: "Neural Networks: Zero to Hero" · Lecture 1 dura ~2h 25min · Título exacto: "The spelled-out intro to neural networks and backpropagation: building micrograd"',d:'Véla en 2 sesiones de 1.5h. Construye una red neuronal desde cero en Python. Lo que Karpathy hace aquí está detrás de cada respuesta que genera tu agente de Appio — después de esto dejas de usarlo como caja negra.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'JS: async/await, fetch, promesas, DOM',ref:'zerotomastery.io → Complete Web Dev 2026 · Sección: "JavaScript: The Complete Picture" (continuar) · Busca las lecciones de "Async JavaScript", "Fetch API", "DOM Manipulation"',d:'La capa que conecta tu código con APIs externas. Sin async/await no puedes llamar a OpenAI desde tu código. Sin DOM no puedes actualizar la UI de ONTI. 1h/día.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'The Algorithm de Elon aplicado al onboarding de ONTI',ref:'Concepto: The Book of Elon, cap. "The Algorithm" (Jorgenson, 2026) · Los 5 pasos: Cuestiona → Borra → Simplifica → Acelera → Automatiza',d:'En papel: mapea el onboarding actual de ONTI. Pasa por los 5 pasos. ¿Qué pantalla eliminas? ¿Qué pregunta sobra? 2h el viernes. Elon eliminó $2M en robótica preguntando esto.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'Autobiografía de Franklin + Isaacson caps 1–6',ref:'Autobiografía: gratis en gutenberg.org — busca "Autobiography of Benjamin Franklin" · Isaacson: "Benjamin Franklin: An American Life", Kindle ~$250 MXN',d:'Autobiografía en 2 días (es corta, ~150 págs). Notas SOLO de sus métodos de aprendizaje — cómo se autodiseñó. Franklin aprendió a imprimir, escribir, hacer ciencia y política sin universidad. El primer founder autodidacta.'},
+      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 1: "micrograd" — red neuronal desde cero',ref:'youtube.com/@AndrejKarpathy → Playlists → "Neural Networks: Zero to Hero" → Video 1 · Título exacto: "The spelled-out intro to neural networks and backpropagation: building micrograd" · Duración: 2h 25min',d:'Véla en 2 sesiones de 1.5h (martes y jueves mañana). Construye una red neuronal desde cero en Python. Lo que Karpathy hace aquí ES lo que está detrás de Claude, ChatGPT y cada agente que construyes en Appio.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'The Algorithm de Elon aplicado al onboarding de ONTI',ref:'Concepto: The Book of Elon, cap. "The Algorithm" · Los 5 pasos: Cuestiona → Borra → Simplifica → Acelera → Automatiza',d:'En papel: mapea el onboarding actual de ONTI. Pasa por los 5 pasos del Algoritmo de Elon. ¿Qué pantalla eliminas? ¿Qué pregunta sobra? 2h el viernes.'}
     ],
-    rhythm:['6:00–7:30 Karpathy Lecture 1','9–12 Build ONTI con Cursor','4–5pm ZTM JS async','Lun/Mié/Vie 5:15–6pm CS50','8pm Franklin/Isaacson 30min'],
+    rhythm:['6:00–7:30 Karpathy Lecture 1 (2 sesiones: Mar y Jue)','9–12 Build ONTI con Cursor','4–5pm ZTM DOM + Advanced JS','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Franklin/Isaacson 30min'],
     checks:[
-      'Karpathy Lecture 1 (micrograd) vista completa — 2 sesiones',
+      'ZTM DOM: Document Object Model entendido',
+      'ZTM DOM: DOM Selectors (querySelector, getElementById)',
+      'ZTM DOM: DOM Events (addEventListener, click, submit)',
+      'ZTM Advanced JS: Closures y scope avanzado',
+      'ZTM Advanced JS: map, filter, reduce con ejercicios propios',
+      'ZTM ES6+: arrow functions, destructuring, spread operator',
+      'Karpathy Lecture 1 vista completa (2 sesiones de 1.5h)',
       'Puedo explicar qué es backpropagation con mis palabras',
-      'Karpathy Lecture 2 (backprop más profundo) iniciada',
-      'ZTM JS: async/await funcionando en un ejemplo propio',
-      'ZTM JS: fetch a una API externa (ej. JSONPlaceholder)',
       'CS50 Lectures 3, 4 y 5 vistas (Algorithms, Memory, Data Structures)',
       'Autobiografía de Franklin leída completa',
       'The Algorithm aplicado al onboarding de ONTI en papel'
     ],
-    output:'Karpathy L1–L2 iniciadas. Fetch a API funcionando. Un paso de ONTI eliminado.'
+    output:'ZTM al 44%. DOM y ES6+ dominados. Karpathy L1 vista. Un paso de ONTI eliminado.'
   },
 
   {
-    id:3, phase:1,
-    focus:'React fundamentos · Karpathy L3–L4 · primer agente en producción',
-    tags:[{t:'ZTM React',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Build',c:'wt-build'}],
+    id:3, phase:1, pct:'44% → 52%',
+    focus:'Async JS + APIs · Karpathy L2–L3 · primer agente en producción',
+    tags:[{t:'ZTM Async+APIs',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Build',c:'wt-build'}],
     quote:'"If you don\'t make stuff, there is no stuff." — Elon. Esta semana el agente de Appio entra a producción.',
-    cal:'🔑 Esta semana converge todo: React (idioma de ONTI), Karpathy L3–L4 (embeddings y transformers — lo que hace funcionar a ChatGPT), y tu primer agente real en un restaurante. CS50 esta semana: Lectures 6–8 (Python, SQL, HTML).',
-    cs50:['Lunes: CS50 Lecture 6 — Python (45 min) · Python es el lenguaje de Karpathy — esta lecture conecta CS50 con los notebooks de IA','Miércoles: CS50 Lecture 7 — SQL (45 min) · Bases de datos relacionales — la misma lógica que Supabase que usas en ONTI','Viernes: CS50 Lecture 8 — HTML/CSS/JS (45 min) · Cómo CS50 ve el stack web — refuerza lo que ya sabes desde ZTM'],
+    cal:'🔑 Async/await y Fetch son el puente entre JavaScript y las APIs de IA. Sin esto no puedes llamar a OpenAI desde tu código. Esta semana terminas esas secciones en ZTM Y construyes el primer agente real en un restaurante. Karpathy L2 y L3 (embeddings) van paralelos.',
+    ztm:{
+      title:'ZTM esta semana — de 44% a 52%',
+      pct:'44% → 52%',
+      modules:[
+        {bold:'Asynchronous JavaScript', desc:'· Callbacks, Promises, async/await. Esta es la sección más importante para conectar con APIs de IA. En ZTM busca: "Async JavaScript", "Promises", "async await". Sin esto no puedes llamar a OpenAI.'},
+        {bold:'Fetch API + AJAX', desc:'· Cómo hacer requests HTTP desde JavaScript. fetch(), .then(), manejo de errores. Esta semana haces tu primera llamada a la API de OpenAI desde JavaScript puro.'},
+        {bold:'Command Line + Git + GitHub basics', desc:'· Terminal básica, git init, commit, push. ZTM tiene una sección de esto. Necesitas Git para CI/CD en semanas posteriores. Si ya lo sabes básico, dale skip rápido.'}
+      ]
+    },
+    cs50:['Lunes: CS50 Lecture 6 — Python (45 min) · cs50.harvard.edu/x/2024/weeks/6 · Python es el lenguaje de Karpathy. Esta lecture conecta CS50 con los notebooks de IA que verás en Karpathy L3+.','Miércoles: CS50 Lecture 7 — SQL (45 min) · Bases de datos relacionales, SELECT, JOIN. La misma lógica que Supabase — que conectas a ONTI en S5. Entender SQL antes de Supabase te ahorra horas de debugging.','Viernes: CS50 Lecture 8 — HTML/CSS/JS (45 min) · Cómo CS50 ve el stack web. Refuerza lo que ya dominas y lo pone en contexto de cómo funciona internet completo.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'Zero to One caps 8–14 (terminar)',ref:'Peter Thiel · Crown Business · Kindle o físico · Cap 9 "If You Build It, Will They Come?" es el más crítico para tu go-to-market',d:'Cap 9 es crítico: Elon y Thiel coinciden — la distribución es tecnología, no ventas. Una hoja al terminar: ¿cómo distribuye ONTI sin ads? Esta respuesta vale más que cualquier deck.'},
-      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 3: "Building makemore" — embeddings · Lecture 4: "Building makemore Part 3" — batch norm',ref:'YouTube: youtube.com/@AndrejKarpathy · Playlist "Neural Networks: Zero to Hero" · Lecture 3: "Building makemore Part 2: MLP" (~1h 15min) · Lecture 4: "Building makemore Part 3: Activations, Gradients, BatchNorm" (~1h 55min)',d:'Aquí entiendes embeddings — la representación matemática de palabras. Directamente relevante para los agentes de Appio: cada palabra del restaurantero se convierte en un vector numérico antes de que el modelo lo procese.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'React: componentes, props, state, useState, useEffect',ref:'zerotomastery.io → Complete Web Dev 2026 · Sección: "React" · Busca: "React Components", "React Hooks", "useState", "useEffect" · Andrei Neagoie lo explica con proyectos reales',d:'React es el idioma de ONTI. Componentes = piezas reutilizables. State = datos que cambian. useState/useEffect = los hooks más importantes. 1h/día. Al final de la semana puedes construir una pantalla de ONTI desde cero.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'Agente de WhatsApp en Appio — en producción en 1 restaurante',ref:'Stack: API de OpenAI (platform.openai.com) + WhatsApp Business API o Twilio · Lenguaje: Node.js + lo de async/await que aprendiste en S2',d:'Bot que responde preguntas frecuentes de restaurantes. Usa fetch (S2) + async/await (S2) + API de OpenAI. No tiene que ser perfecto — tiene que estar respondiendo en un restaurante real al final de la semana.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'Zero to One caps 8–14 (terminar)',ref:'Peter Thiel · Continúa desde S1 · Cap 9 "If You Build It, Will They Come?" es el más crítico',d:'Cap 9 responde: la distribución es tecnología, no ventas. Una hoja al terminar: ¿cómo distribuye ONTI sin ads pagados? Esta respuesta vale más que cualquier deck de VC.'},
+      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 2 (backprop profundo) + Lecture 3 (embeddings)',ref:'youtube.com/@AndrejKarpathy · Playlist "Neural Networks: Zero to Hero" · L2: "The spelled-out intro to language modeling: building makemore" (~1h 15min) · L3: "Building makemore Part 2: MLP" (~1h 15min)',d:'L2: cómo un modelo aprende a predecir la siguiente letra. L3: embeddings — la representación matemática de palabras. Directamente aplicable: cada palabra del restaurantero se convierte en un vector numérico antes de que el agente lo procese.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'Agente de WhatsApp en Appio — en producción',ref:'Stack: OpenAI API (platform.openai.com) + WhatsApp Business API o Twilio (twilio.com) · Lenguaje: JavaScript/Node.js + lo de async/await que aprendiste esta semana',d:'Bot que responde preguntas frecuentes de restaurantes. Usa fetch + async/await de ZTM + API de OpenAI. No tiene que ser perfecto — tiene que estar respondiendo en 1 restaurante real al final de la semana.'}
     ],
-    rhythm:['6:00–7:30 Karpathy L3–L4','9–12 Build agente Appio','4–5pm ZTM React','Lun/Mié/Vie 5:15–6pm CS50','8pm Zero to One'],
+    rhythm:['6:00–7:30 Karpathy L2 + L3 (días alternos)','9–12 Build agente Appio','4–5pm ZTM Async + Fetch + Git','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Zero to One'],
     checks:[
-      'Karpathy Lecture 3 (embeddings/MLP) vista completa',
-      'Karpathy Lecture 4 (BatchNorm) vista completa',
+      'ZTM Async JS: Promises y async/await — puedo hacer una función async propia',
+      'ZTM Fetch: llamada exitosa a una API externa (ej. API pública de prueba)',
+      'Primera llamada a OpenAI API desde JavaScript propio',
+      'ZTM Git: repo en GitHub con al menos 1 commit de ONTI o Appio',
+      'Karpathy Lecture 2 vista completa',
+      'Karpathy Lecture 3 (embeddings) vista completa',
       'Puedo explicar qué es un embedding con mis palabras',
-      'ZTM React: crear un componente propio con props',
-      'ZTM React: useState para manejar un dato que cambia',
-      'ZTM React: useEffect para hacer fetch al cargar',
       'CS50 Lectures 6, 7 y 8 vistas (Python, SQL, HTML)',
       'Agente de WhatsApp deployado y respondiendo en 1 restaurante real',
       'Zero to One terminado con hoja de distribución de ONTI'
     ],
-    output:'Agente de WhatsApp en producción. Entiendes embeddings. React arrancado.'
+    output:'ZTM al 52%. Agente de WhatsApp en producción. Entiendes embeddings. Fetch a OpenAI.'
   },
 
   // ══════════════════ FASE 2 ══════════════════
   {
-    id:4, phase:2,
-    focus:'React avanzado · Karpathy L5–L6 GPT · RAG en producción',
-    tags:[{t:'ZTM React+',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Build',c:'wt-build'}],
+    id:4, phase:2, pct:'52% → 60%',
+    focus:'Node.js + Express + APIs REST · Karpathy L4–L5 GPT · RAG en Appio',
+    tags:[{t:'ZTM Node',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Build',c:'wt-build'}],
     quote:'"Often we were told something was impossible, but once we broke it down into its constituent elements, we could solve it." — Elon',
-    cal:'📈 Karpathy entra en su semana más densa: Lecture 5 construye un GPT desde cero (2h 13min). Esto es lo más importante que verás este sprint. Al mismo tiempo, React avanzado en ZTM y RAG en Appio.',
-    cs50:['Lunes: CS50 Lecture 9 — Flask/Backend (45 min) · Cómo funciona un servidor web — base para entender tu API de ONTI','Miércoles: CS50 Semana 10 — Ethics of AI (45 min) · Elon habla de esto constantemente — ética en IA es ventaja competitiva','Viernes: CS50 Problem Set repaso — elige 1 problema de semanas anteriores que te costó trabajo y resuélvelo'],
+    cal:'📈 Node.js es la semana donde JavaScript pasa del browser al servidor. Express te da la API que conecta ONTI con la base de datos. Karpathy L5 — "Let\'s build GPT from scratch" — es el hito más importante de toda la serie. Véla en 2 sesiones.',
+    ztm:{
+      title:'ZTM esta semana — de 52% a 60%',
+      pct:'52% → 60%',
+      modules:[
+        {bold:'Node.js fundamentals', desc:'· Módulos, file system, npm, package.json. La diferencia entre Node y el browser. ZTM tiene una sección completa de Node.js — búscala por nombre en el curso.'},
+        {bold:'Express.js + REST APIs', desc:'· Rutas, middlewares, req/res, métodos HTTP (GET, POST, PUT, DELETE). Construyes una API simple. Esta es la base del backend de ONTI.'},
+        {bold:'Bases de datos intro (SQL básico)', desc:'· Si ZTM tiene una sección de databases en este punto del curso, úsala. Si no, la Lecture 7 de CS50 (que ya viste) te da la base suficiente para conectar Supabase la semana siguiente.'}
+      ]
+    },
+    cs50:['Lunes: CS50 Lecture 9 — Flask + Backend (45 min) · cs50.harvard.edu/x/2024/weeks/9 · Cómo se conecta un frontend con un backend en Python/Flask. Mismo concepto que Express en Node — diferente lenguaje.','Miércoles: CS50 Short — "Cookies and Sessions" (20 min) + "HTTPS" (20 min) · cs50.harvard.edu/x/2024/shorts · Cómo funciona la autenticación y el HTTPS — preparación directa para Auth.js en S9.','Viernes: CS50 Lecture 10 — Ethics of AI (45 min) · Elon habla de esto constantemente en The Book of Elon. Entender ética de IA es ventaja competitiva cuando pitcheas ONTI a VCs.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'Life 3.0 — Max Tegmark (caps 1–4)',ref:'Autor: Max Tegmark (profesor MIT, co-fundador Future of Life Institute) · Editorial: Knopf · Título: "Life 3.0: Being Human in the Age of Artificial Intelligence" · Kindle Amazon MX ~$250 MXN · 364 páginas · Elon: "A compelling guide to the challenges and choices in our quest for a great future"',d:'30–40 min noche. Caps 1–4 esta semana: qué es inteligencia artificial, escenarios de superinteligencia, cómo posicionar tu empresa en ese mundo. Para hablar con VCs de IA con autoridad real, no buzzwords.'},
-      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 5: "Let\'s build GPT from scratch" · Lecture 6: "Let\'s build the GPT Tokenizer"',ref:'YouTube: youtube.com/@AndrejKarpathy · Lecture 5: "Let\'s build GPT: from scratch, in code, spelled out" — dura 1h 56min · Lecture 6: "Let\'s build the GPT Tokenizer" — dura 2h 13min · Son las lectures más densas — vélas en 2 sesiones cada una',d:'Lecture 5 es el hito más importante de Karpathy: construye un GPT desde cero, línea por línea. Si ves esto y lo entiendes, entiendes exactamente qué hace Claude, ChatGPT y cada agente que construyes. No te saltes ninguna parte.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'React: Context API, useReducer, React Router, fetch en componentes',ref:'zerotomastery.io → Complete Web Dev 2026 · Secciones: "React Hooks Advanced", "React Router", "Working with APIs in React" · Son las secciones que siguen después de los fundamentos de React',d:'ONTI con 28 rutas emocionales necesita React Router para navegar entre ellas y Context para manejar el estado global del usuario. useReducer es la versión avanzada de useState para datos complejos.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'Agente de Appio con RAG (Retrieval Augmented Generation)',ref:'RAG = el agente busca en una base de datos propia antes de responder · Stack: OpenAI API + Supabase Vector Store o Pinecone · Tutorial: "RAG with OpenAI and Supabase" en YouTube',d:'Mejora el agente de S3: en lugar de responder solo con el modelo base, primero busca en el historial y menú del restaurante. El agente responde con información específica del cliente. Este es el salto de chatbot a producto real.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'Life 3.0 — Max Tegmark (caps 1–4)',ref:'Autor: Max Tegmark, profesor MIT · "Life 3.0: Being Human in the Age of Artificial Intelligence" · Knopf · Kindle ~$250 MXN · Elon: "A compelling guide to the challenges and choices in our quest for a great future of life, intelligence, and consciousness."',d:'30–40 min cada noche. Caps 1–4: qué es IA, escenarios de superinteligencia, cómo posicionar tu empresa en ese mundo. Para hablar con VCs de IA con autoridad real — no buzzwords.'},
+      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 4 (BatchNorm) + Lecture 5 "Let\'s build GPT from scratch"',ref:'youtube.com/@AndrejKarpathy · L4: "Building makemore Part 3: Activations, Gradients, BatchNorm" (~1h 55min) · L5: "Let\'s build GPT: from scratch, in code, spelled out" — dura 1h 56min · Véla en 2 sesiones',d:'L5 es el hito más importante de Karpathy: construye un GPT desde cero, línea por línea. Si entiendes esto, entiendes exactamente qué hace Claude, ChatGPT y cada agente de Appio. No te saltes ninguna parte.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'Agente de Appio con RAG (Retrieval Augmented Generation)',ref:'RAG = el agente busca en una base de datos propia antes de responder · Stack: OpenAI API + Supabase Vector Store · Tutorial referencia: "RAG with OpenAI and Supabase" en YouTube',d:'Mejora el agente de S3: en lugar de responder solo con el modelo base, primero busca en el historial y menú del restaurante. El agente responde con información específica del cliente. Este es el salto de chatbot a producto real.'}
     ],
-    rhythm:['6:00–7:30 Karpathy L5','9–12 Build RAG Appio','4–5pm ZTM React avanzado','Lun/Mié/Vie 5:15–6pm CS50','8pm Life 3.0'],
+    rhythm:['6:00–7:30 Karpathy L4 + L5 (días alternos)','9–12 Build RAG Appio','4–5pm ZTM Node.js + Express','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Life 3.0'],
     checks:[
-      'Karpathy Lecture 5 (GPT from scratch) vista completa',
-      'Karpathy Lecture 6 (Tokenizer) vista completa',
+      'ZTM Node.js: servidor básico corriendo en local',
+      'ZTM Express: API con GET y POST funcionando',
+      'ZTM Express: al menos 2 rutas propias con datos reales de Appio',
+      'Karpathy Lecture 4 vista completa',
+      'Karpathy Lecture 5 (GPT from scratch) vista completa — 2 sesiones',
       'Puedo explicar qué es un transformer con mis palabras',
       'RAG funcionando en agente de Appio',
-      'ZTM: React Router con al menos 3 rutas navegando',
-      'ZTM: Context API para estado global básico',
-      'CS50 Lectures 9, 10 y 1 repaso vistas',
+      'CS50 Lectures 9, 10 y Shorts vistas',
       'Life 3.0 caps 1–4 leídos'
     ],
-    output:'GPT entendido desde los átomos. RAG en Appio. React Router en ONTI.'
+    output:'ZTM al 60%. GPT entendido desde los átomos. RAG en Appio. API REST funcionando.'
   },
 
   {
-    id:5, phase:2,
-    focus:'Node.js + Supabase · Karpathy L7 cierra · velocidad medida',
-    tags:[{t:'ZTM Node+DB',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'}],
+    id:5, phase:2, pct:'60% → 68%',
+    focus:'Supabase + Bases de datos · Karpathy L6–L7 cierra · velocidad medida',
+    tags:[{t:'ZTM Supabase+DB',c:'wt-ztm'},{t:'Karpathy',c:'wt-karp'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'}],
     quote:'"A factory moving at twice the speed of another factory is basically equivalent to two factories." — Elon',
-    cal:'🏁 Karpathy termina esta semana con Lecture 7. Es un hito enorme — después de esto tienes el tronco de IA más sólido que el 99% de los founders. Node.js y Supabase te dan el backend que ONTI necesita.',
-    cs50:['Lunes: CS50 Final Project ideas (45 min) · Revisa proyectos finales de estudiantes anteriores — para ver qué se puede construir con lo que ya sabes','Miércoles: CS50 Shorts — "SQL" (20 min) + "Python" (20 min) · Shorts son resúmenes de 15–20 min de conceptos específicos, disponibles en cs50.harvard.edu','Viernes: CS50 — elegir 1 Problem Set de la lista y completarlo parcialmente (45 min de trabajo)'],
+    cal:'🏁 KARPATHY TERMINA ESTA SEMANA. Lecture 7 es la más larga (4h 1min) — véla en 3 sesiones. Al terminarla habrás construido GPT-2 de 124M parámetros desde cero. Ese conocimiento es tuyo para siempre. En ZTM: Supabase y bases de datos — el backend de ONTI.',
+    ztm:{
+      title:'ZTM esta semana — de 60% a 68%',
+      pct:'60% → 68%',
+      modules:[
+        {bold:'PostgreSQL + SQL avanzado', desc:'· JOINs, índices, transacciones. ZTM tiene una sección de bases de datos. Supabase usa PostgreSQL — entender SQL directamente te ahorra horas de debugging cuando algo falla en producción.'},
+        {bold:'Supabase — setup + tablas + auth básico', desc:'· Conectar Supabase a un proyecto Next.js/Node. Crear tablas para las rutas emocionales de ONTI. Guardar y leer el progreso de usuario. Supabase tiene documentación oficial excelente: supabase.com/docs'},
+        {bold:'APIs con autenticación (JWT basics)', desc:'· Cómo proteger rutas de tu API para que solo usuarios autenticados accedan. Base para lo que construyes en S9 con Clerk.'}
+      ]
+    },
+    cs50:['Lunes: CS50 — Shorts: "SQL" (20 min) + "Indexes" (15 min) · cs50.harvard.edu/x/2024/shorts · SQL profundo que conecta directo con lo que haces en Supabase esta semana.','Miércoles: CS50 Lecture — "Scalability" (45 min) · Load balancing, caching, cloud — cómo ONTI aguanta 100k usuarias sin caerse. Este es el thinking en límites de Elon aplicado a infraestructura.','Viernes: CS50 — Reflexión + repaso: ¿qué concepto de CS50 de las últimas 3 semanas usaste directamente en tu código esta semana? Escribe 5 líneas y trae a la próxima sesión.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'Masters of Doom — David Kushner',ref:'Autor: David Kushner · Editorial: Random House · Título completo: "Masters of Doom: How Two Guys Created an Empire and Transformed Pop Culture" · Kindle Amazon MX ~$200 MXN · Trata de John Carmack y John Romero (id Software, Doom, Quake)',d:'Lee en 3 días — es adictivo. Notas SOLO de la rutina de trabajo de Carmack: cómo dormía pocas horas, cómo estructuraba sus sprints, cómo la velocidad de su código aplastó a todos los competidores. Carmack = Elon del videojuego.'},
-      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 7: "Let\'s reproduce GPT-2" — SERIE COMPLETA',ref:'YouTube: youtube.com/@AndrejKarpathy · Título: "Let\'s reproduce GPT-2 (124M)" · Duración: 4h 1min — la más larga de la serie · Véla en 3 sesiones · Esta es la lecture final — al terminarla habrás visto toda la serie "Neural Networks: Zero to Hero"',d:'La lecture más larga y la más importante: reproduce GPT-2 de 124 millones de parámetros desde cero. Al terminar esta serie, entiendes literalmente cómo funciona ChatGPT, Claude y cualquier LLM. Eso es ventaja técnica real.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Node.js + Express + REST APIs + Supabase',ref:'zerotomastery.io → Complete Web Dev 2026 · Secciones: "Node.js" + "Express.js" + "Databases (SQL & PostgreSQL)" · Supabase: supabase.com/docs (documentación oficial, gratis) · Tutorial recomendado adicional: "Supabase + Next.js" en YouTube de Supabase',d:'Node.js = JavaScript en el servidor. Express = framework para hacer APIs. Supabase = tu base de datos en la nube con API automática. ONTI necesita esto para guardar el progreso de usuario en las 28 rutas emocionales.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'Supabase en ONTI + tracking de velocidad instalado',ref:'Supabase: supabase.com · Plan gratuito generoso para empezar · Para tracking de velocidad: Linear (linear.app) o Notion — elige uno y úsalo todas las semanas',d:'Conecta Supabase a ONTI: que el progreso de una ruta emocional se guarde en la base de datos. Y mide hoy: ¿cuántos deploys/semana llevas? Ese número es tu baseline. S12 tiene que ser 3–5x más.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'Masters of Doom — David Kushner',ref:'"Masters of Doom: How Two Guys Created an Empire and Transformed Pop Culture" · David Kushner · Random House · Kindle ~$200 MXN · Trata de John Carmack y John Romero (id Software, creadores de Doom y Quake)',d:'Lee en 3 días — es adictivo. Notas SOLO de la rutina de trabajo de Carmack: cómo estructuraba sus sprints, cómo la velocidad de su código aplastó a todos los competidores. Carmack = Elon del videojuego.'},
+      {badge:'pb-karp',bl:'🟢 Karpathy',t:'Lecture 6 (Tokenizer) + Lecture 7 "Let\'s reproduce GPT-2" — SERIE COMPLETA',ref:'youtube.com/@AndrejKarpathy · L6: "Let\'s build the GPT Tokenizer" (~2h 13min) · L7: "Let\'s reproduce GPT-2 (124M)" — la más larga: 4h 1min · Véla en 3 sesiones de ~1.5h · AL TERMINAR: habrás visto toda la serie',d:'L7 reproduce GPT-2 de 124 millones de parámetros desde cero. Es la lecture final. Al terminarla, entiendes literalmente cómo funciona ChatGPT, Claude y cualquier LLM. Ese conocimiento es ventaja técnica real.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'Supabase en ONTI + tracking de velocidad instalado',ref:'Supabase: supabase.com · Plan gratuito generoso · Para tracking: Linear (linear.app) o Notion (notion.so)',d:'Conecta Supabase a ONTI: que el progreso de una ruta emocional se guarde en base de datos. Y mide hoy: ¿cuántos deploys/semana llevas desde S1? Ese número es tu baseline — S12 tiene que ser 3–5x más.'}
     ],
-    rhythm:['6:00–7:30 Karpathy L7 (3 sesiones)','9–12 Build ONTI + Supabase','4–5pm ZTM Node + Supabase','Lun/Mié/Vie 5:15–6pm CS50','8pm Masters of Doom'],
+    rhythm:['6:00–7:30 Karpathy L6 + L7 (3 sesiones alternando)','9–12 Build ONTI + Supabase','4–5pm ZTM Supabase + DB','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Masters of Doom'],
     checks:[
       'KARPATHY LECTURE 7 VISTA — SERIE COMPLETA ✓',
       'Masters of Doom leído completo',
-      'ZTM Node.js: servidor Express básico funcionando',
-      'ZTM Supabase: base de datos conectada a ONTI',
-      'Progreso de usuario guardado en Supabase desde ONTI',
-      'CS50: 3 sesiones completadas esta semana',
+      'ZTM: tablas en Supabase creadas para ONTI (usuarios, rutas, progreso)',
+      'ZTM: datos de progreso guardados desde ONTI a Supabase',
+      'JWT básico: entiendo cómo funciona la autenticación por token',
+      'CS50: 3 sesiones completadas (SQL Shorts, Scalability, reflexión)',
       'Sistema de tracking de velocidad instalado (Linear o Notion)',
-      'Número de deploys/semana de S1 hasta hoy registrado'
+      'Número de deploys/semana medido desde S1'
     ],
-    output:'KARPATHY TERMINADO. Supabase en ONTI guardando datos. Velocidad medida.'
+    output:'ZTM al 68%. KARPATHY TERMINADO. Supabase en ONTI guardando datos. Velocidad medida.'
   },
 
   {
-    id:6, phase:2,
-    focus:'Next.js completo · entiendes tu propio stack · CS50 avanzado',
-    tags:[{t:'ZTM Next.js',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    id:6, phase:2, pct:'68% → 76%',
+    focus:'React fundamentos completo · entiendes el idioma de ONTI',
+    tags:[{t:'ZTM React',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
     quote:'"One reason SpaceX could move so quickly is I made both the engineering decisions and the spending decisions in one brain. My brain trusts itself." — Elon',
-    cal:'🎯 ONTI vive en Next.js. Esta semana dejas de usar Next.js como caja negra. Server Components, App Router, SSR — entender esto cambia tus decisiones de arquitectura. También terminas Life 3.0 y haces 3 sesiones de CS50.',
-    cs50:['Lunes: CS50 — Cybersecurity lecture (45 min) · Passwords, encryption, HTTPS — cómo ONTI protege los datos de tus usuarias','Miércoles: CS50 Short — "Computational Thinking" (20 min) + repaso de Data Structures (25 min) · Refuerzo de los conceptos que más usas','Viernes: CS50 — 1 Problem Set a elección, trabajar 45 min · El punto no es terminarlo — es practicar resolver problemas en código'],
+    cal:'🎯 React es el idioma de ONTI. Esta semana lo aprendes desde cero hasta dominarlo. Componentes, props, state, hooks — después de esta semana puedes construir cualquier pantalla de ONTI desde cero sin consultar docs en cada línea. Terminas Life 3.0.',
+    ztm:{
+      title:'ZTM esta semana — de 68% a 76%',
+      pct:'68% → 76%',
+      modules:[
+        {bold:'React — sección completa parte 1', desc:'· Componentes funcionales, JSX, props, children. La sección de React en ZTM empieza aquí. JSX = HTML dentro de JavaScript. Props = cómo los componentes se pasan datos entre sí.'},
+        {bold:'React Hooks: useState + useEffect', desc:'· useState = datos que cambian. useEffect = efectos secundarios (fetch, timers). Estos son los 2 hooks que usas el 80% del tiempo. ZTM tiene ejercicios — hazlos todos.'},
+        {bold:'React — listas, formularios, eventos', desc:'· Renderizar listas con .map(), manejar formularios controlados, eventos onClick/onChange. Con esto ya puedes construir el flujo de selección de ruta emocional de ONTI.'}
+      ]
+    },
+    cs50:['Lunes: CS50 — Cybersecurity lecture (45 min) · Passwords, hashing, HTTPS, SQL injection. Directamente aplicable a tu sistema de auth de ONTI con Clerk en S9.','Miércoles: CS50 Short — "OAuth" (20 min) + repaso "Sessions" (20 min) · Cómo funciona "Login con Google". OAuth es el protocolo detrás de Clerk y Auth.js que usas en S9.','Viernes: CS50 — "AI" lecture o repaso libre (45 min) · Cómo CS50 explica IA en 2024 vs lo que aprendiste en Karpathy. Escribe las diferencias — te ayuda a consolidar Karpathy.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'Life 3.0 — Tegmark caps 5–8 (terminar)',ref:'Max Tegmark · Knopf · Continúa desde donde quedaste en S4',d:'Segunda mitad: escenarios de IA a largo plazo, qué trabajos desaparecen, cómo posicionar ONTI en ese mundo. Una página al terminar: ¿dónde encajan AutoAsistente de Appio y ONTI en los próximos 10 años? Esa página va en tu pitch.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Next.js: App Router, Server Components, SSR, API Routes, metadata',ref:'zerotomastery.io → Complete Web Dev 2026 · Sección: "Next.js" (si está incluida) · Si no: curso oficial en nextjs.org/learn (gratis, ~6h) · Documentación: nextjs.org/docs · Tema clave: "App Router vs Pages Router" — ONTI usa App Router',d:'Next.js es React + servidor. Server Components = el componente se renderiza en el servidor (más rápido, mejor SEO). App Router = la nueva forma de manejar rutas en Next.js 13+. ONTI usa esto — entenderlo te permite optimizar cada pantalla.'},
-      {badge:'pb-ztm',bl:'⚡ Prompt Eng.',t:'Anthropic Prompt Engineering Guide',ref:'Autor: Anthropic · Completamente gratis · URL: docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview · También en: promptingguide.ai para complementar',d:'Eres el chief engineer de los agentes de ONTI y Appio. Este guide te enseña cómo darle contexto al modelo, cómo estructurar prompts para resultados consistentes, chain-of-thought, few-shot examples. Ventaja técnica directa sobre cualquier competidor en el espacio.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'3 decisiones técnico-financieras de ONTI en papel',ref:'Framework: The Book of Elon — "Earn Deep Understanding" + "The Algorithm" · Cada decisión en una hoja con primeros principios',d:'Feature que sí construyes vs no. Infraestructura que compras vs construyes tú. Integración que vale el tiempo vs no. Una hoja por decisión: ¿cuál es el costo real? ¿cuál es el beneficio en utilidad para el usuario? Tómalas solo — ese es el Chief Engineer.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'Life 3.0 caps 5–8 (terminar)',ref:'Max Tegmark · Continúa desde S4 · Segunda mitad del libro',d:'Segunda mitad: escenarios de IA a futuro, qué trabajos desaparecen, cómo posicionar ONTI en ese mundo. Una página al terminar: ¿dónde encajan AutoAsistente y ONTI en los próximos 10 años? Esa página va en tu pitch de VC.'},
+      {badge:'pb-ztm',bl:'⚡ Prompt Eng.',t:'Anthropic Prompt Engineering Guide',ref:'Gratis en: docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview · También en: promptingguide.ai para complementar · No es un curso — es documentación oficial',d:'Eres el chief engineer de los agentes de ONTI y Appio. Este guide te enseña: cómo estructurar prompts para resultados consistentes, chain-of-thought, few-shot examples, cómo evitar hallucinations. Ventaja técnica directa.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'Primera pantalla de ONTI construida en React desde cero',ref:'Stack: React + lo que aprendes esta semana en ZTM · Pantalla sugerida: la de selección de ruta emocional (pain point)',d:'Esta semana construyes con React por primera vez una pantalla de ONTI en el código real del proyecto. No tiene que estar conectada al backend — solo la UI. El objetivo es aplicar React de ZTM directamente en tu producto.'}
     ],
-    rhythm:['6:00–7:30 ZTM Next.js','9–12 Build ONTI','4pm Prompt Engineering Guide','Lun/Mié/Vie 5:15–6pm CS50','8pm Life 3.0'],
+    rhythm:['6:00–7:30 ZTM React','9–12 Build ONTI en React','4pm Prompt Engineering Guide','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Life 3.0'],
     checks:[
       'Life 3.0 terminado — página de posicionamiento de ONTI escrita',
-      'ZTM/Next.js: App Router con múltiples rutas en ONTI',
-      'Next.js Server Components vs Client Components — sé cuándo usar cuál',
+      'ZTM React: componentes funcionales y JSX — puedo escribirlos sin copiar',
+      'ZTM React: props pasadas entre componentes propios',
+      'ZTM React: useState — contador o toggle propio',
+      'ZTM React: useEffect — fetch a API dentro de componente',
+      'ZTM React: lista de rutas emocionales renderizada con .map()',
       'Prompt Engineering Guide de Anthropic leído completo',
-      'Al menos 1 prompt de ONTI o Appio reescrito y mejorado con el guide',
-      'CS50: 3 sesiones completadas esta semana',
-      '3 decisiones técnico-financieras de ONTI documentadas',
-      'Al menos 1 cambia el roadmap de ONTI'
+      'Primera pantalla de ONTI construida en React real',
+      'CS50: 3 sesiones completadas'
     ],
-    output:'Entiendes tu propio stack Next.js. Prompt Engineering dominado. 3 decisiones clave.'
+    output:'ZTM al 76%. React dominado. Primera pantalla de ONTI en React real.'
   },
 
   {
-    id:7, phase:2,
-    focus:'TypeScript + CI/CD · la fábrica que construye la fábrica',
-    tags:[{t:'ZTM TS+Deploy',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
+    id:7, phase:2, pct:'76% → 84%',
+    focus:'React avanzado + Next.js · la fábrica que construye la fábrica',
+    tags:[{t:'ZTM React+ Next.js',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
     quote:'"The biggest epiphany I had building Tesla is what really matters is the machine that builds the machines — the factory." — Elon',
-    cal:'⚙️ Esta semana dejas de hacer deploys manuales. CI/CD = cada vez que haces push, el sistema testea y despliega solo. Esto dobla tu velocidad efectiva sin agregar horas. TypeScript elimina bugs antes de que lleguen a producción.',
-    cs50:['Lunes: CS50 — "Web Programming with Python and JS" intro (45 min) · Cómo se conecta frontend con backend — refuerza lo que ya sabes','Miércoles: CS50 Short — "Cookies and Sessions" (20 min) + "HTTPS" (20 min) · Cómo funciona la autenticación — preparación para S9','Viernes: CS50 — Problem Set de web (45 min de trabajo) · Construir algo pequeño con HTML/JS usando lo aprendido en CS50'],
+    cal:'⚙️ React avanzado + Next.js en la misma semana es intenso pero posible: ZTM los tiene seguidos. Next.js es React + servidor — ONTI vive ahí. Entender Next.js esta semana cambia cómo construyes cada pantalla. También arranca CI/CD.',
+    ztm:{
+      title:'ZTM esta semana — de 76% a 84%',
+      pct:'76% → 84%',
+      modules:[
+        {bold:'React avanzado: Context API, React Router, custom hooks', desc:'· Context = estado global sin librerías externas. React Router = múltiples páginas en React. Custom hooks = reutilizar lógica. ONTI con 28 rutas emocionales necesita todo esto.'},
+        {bold:'Next.js: App Router, Server Components, SSR, API Routes', desc:'· Next.js es React + servidor. Server Components se renderizan en el servidor (más rápido, mejor SEO). App Router = la nueva forma de manejar rutas. ONTI usa Next.js — esta semana entiendes tu propio stack.'},
+        {bold:'TypeScript básico en ZTM', desc:'· Si ZTM tiene sección de TypeScript en este punto, úsala. Si no, typescript-lang.org/docs (oficial, gratis). Tipos, interfaces, cómo habilitarlo en un proyecto Next.js existente.'}
+      ]
+    },
+    cs50:['Lunes: CS50 — Web Programming intro + HTTP avanzado (45 min) · Cómo funciona una request HTTP end-to-end — desde el browser hasta el servidor y de regreso. Refuerza lo de Next.js SSR.','Miércoles: CS50 Short — "Cookies" (15 min) + "Sessions" (15 min) + "Local Storage" (15 min) · Cómo los browsers guardan datos — relevante para el estado de sesión de usuarias en ONTI.','Viernes: CS50 — Reflexión estructurada (45 min): ¿qué parte de CS50 Lectures 0–10 te costó más trabajo? Revísala 15 min. Escribe cómo conecta con algo que construiste en ONTI o Appio.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:"Structures: Why Things Don't Fall Down — J.E. Gordon",ref:'Autor: J.E. Gordon (ingeniero estructural) · Editorial: Da Capo Press · Título completo: "Structures: Or Why Things Don\'t Fall Down" · Kindle Amazon MX ~$180 MXN · Elon: "A good book on structural design. It is really, really good if you want a primer on structural design."',d:'No es sobre edificios — es sobre por qué las cosas aguantan carga y cuándo se rompen. Metáfora directa para arquitectura de software: por qué un sistema de ONTI a 100k usuarios se rompe si no está bien diseñado. Lo que aprendes aquí cambia cómo piensas la arquitectura.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'TypeScript: tipos, interfaces, generics, utility types',ref:'zerotomastery.io → Complete Web Dev 2026 · Sección: "TypeScript" · También: typescript-lang.org/docs (referencia oficial) · Playlist "TypeScript Tutorial" de The Net Ninja en YouTube como complemento gratuito',d:'ONTI usa TypeScript. Tipos = contratos que el editor verifica antes de que corras el código. Interface = estructura de un objeto. Un error de tipo que TypeScript atrapa = un bug que no llega a producción de ONTI.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'CI/CD: GitHub Actions + Vercel deploy automático',ref:'zerotomastery.io · Sección: "Git + GitHub" + "Deployment" · GitHub Actions: docs.github.com/en/actions (gratis) · Vercel: vercel.com/docs (gratis para proyectos personales) · Tutorial: "GitHub Actions CI/CD Next.js Vercel" en YouTube',d:'CI = Continuous Integration (cada push se testea). CD = Continuous Deployment (cada push aprobado se despliega). Configuras un archivo YAML en GitHub y Vercel hace el resto. Elon: automatiza al final, cuando el proceso es correcto. El proceso de S7 ya es correcto.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'CI/CD en ONTI + proceso de desarrollo documentado',ref:'Herramienta: GitHub Actions (github.com) + Vercel (vercel.com) · Documenta en Notion o un README en tu repo',d:'Deploy automatizado: push a main → Vercel despliega en 2 min. Documenta el proceso completo de desarrollo de ONTI en una página de Notion: idea → código → review → deploy. Esta documentación es tu "fábrica" — sin ella, escalar el equipo es imposible.'}
+      {badge:'pb-book',bl:'📚 Libro',t:"Structures: Why Things Don't Fall Down — J.E. Gordon",ref:'"Structures: Or Why Things Don\'t Fall Down" · J.E. Gordon · Da Capo Press · Kindle ~$180 MXN · Elon: "A good book on structural design. It is really, really good if you want a primer on structural design."',d:'No es sobre edificios — es sobre por qué las cosas aguantan carga y cuándo se rompen bajo escala. Metáfora directa para arquitectura de software: por qué ONTI a 100k usuarios necesita diseño estructural desde ahora.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'CI/CD en ONTI + Next.js App Router con rutas de ONTI',ref:'GitHub Actions: docs.github.com/en/actions (gratis) · Vercel: vercel.com (gratis para proyectos personales) · Tutorial: "Next.js + Vercel deploy" en Vercel docs',d:'Deploy automatizado: push a GitHub → Vercel despliega en 2 min. Y en ONTI: las rutas principales de la app migradas a Next.js App Router (si no lo están). Esta semana cada push va directo a producción sin intervención manual.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'3 decisiones técnico-financieras de ONTI en papel',ref:'Framework: The Book of Elon — "Earn Deep Understanding" · Una hoja por decisión',d:'Feature que sí construyes vs no. Infraestructura que compras vs construyes. Integración que vale el tiempo vs no. Una hoja por decisión con primeros principios. Tómalas solo — ese es el Chief Engineer.'}
     ],
-    rhythm:['6:00–7:30 ZTM TypeScript','9–12 Build + CI/CD','4pm ZTM GitHub Actions','Lun/Mié/Vie 5:15–6pm CS50','8pm Structures'],
+    rhythm:['6:00–7:30 ZTM React avanzado + Next.js','9–12 Build ONTI Next.js','4pm CI/CD setup','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Structures'],
     checks:[
       'Structures leído completo',
-      'ZTM TypeScript: tipos básicos e interfaces sin consultar docs',
-      'TypeScript habilitado y funcionando en al menos 1 módulo de ONTI',
-      'CI/CD configurado: push a GitHub → deploy automático en Vercel',
-      'Proceso de desarrollo de ONTI documentado en Notion/README',
-      'CS50: 3 sesiones completadas esta semana',
-      'Tiempo de deploy medido — ¿cuántos minutos tarda ahora vs S1?'
+      'ZTM React Context API: estado global funcionando en ONTI',
+      'ZTM React Router: navegación entre pantallas de ONTI',
+      'ZTM Next.js: App Router con rutas de ONTI configuradas',
+      'ZTM Next.js: Server Components vs Client Components — sé cuándo usar cuál',
+      'TypeScript: al menos 1 archivo de ONTI con tipos básicos',
+      'CI/CD: push a GitHub → deploy automático en Vercel',
+      'CS50: 3 sesiones completadas',
+      '3 decisiones técnico-financieras de ONTI documentadas'
     ],
-    output:'Deploy automatizado. TypeScript activo en ONTI. Fábrica documentada.'
+    output:'ZTM al 84%. Next.js App Router en ONTI. CI/CD automático. Structures leído.'
   },
 
   {
-    id:8, phase:2,
-    focus:'Voice Coach prototipado · todo lo aprendido converge en una feature',
-    tags:[{t:'ZTM Audio',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Build',c:'wt-build'}],
+    id:8, phase:2, pct:'84% → 90%',
+    focus:'TypeScript + Testing + Voice Coach prototipado',
+    tags:[{t:'ZTM TS+Testing',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Build',c:'wt-build'}],
     quote:'"Failure is a side effect of iteration. If you can\'t tell me the four ways you fucked something up before you got it right, you weren\'t doing the real work." — Elon',
-    cal:'🎤 El Voice Coach es el feature más diferenciador de ONTI. Requiere todo lo aprendido: JS async (S2), React (S3–S4), APIs (S5), Next.js (S6). Esta semana no aprendes nada nuevo — aplicas todo lo que tienes.',
-    cs50:['Lunes: CS50 — "Artificial Intelligence" lecture (45 min) · Cómo CS50 explica la IA — ver cómo conversa con lo que aprendiste en Karpathy','Miércoles: CS50 Short — "Search Algorithms" + "Machine Learning" (45 min total) · Conexión entre algoritmos clásicos y IA moderna','Viernes: CS50 — Integración: ¿qué concepto de CS50 conecta con algo que construiste esta semana? Escribe 5 líneas.'],
+    cal:'🎤 El Voice Coach es el feature más diferenciador de ONTI. Esta semana lo prototipas mientras aprendes las secciones de TypeScript y Testing de ZTM — que son exactamente las herramientas que el Voice Coach necesita para ser confiable en producción.',
+    ztm:{
+      title:'ZTM esta semana — de 84% a 90%',
+      pct:'84% → 90%',
+      modules:[
+        {bold:'TypeScript completo en ZTM', desc:'· Si ZTM tiene sección de TypeScript aquí, úsala completa: tipos, interfaces, generics, TypeScript con React. Si no está en ZTM, usa typescript-lang.org/docs directamente. ONTI usa TypeScript — esto elimina bugs antes de producción.'},
+        {bold:'Testing: Vitest o Jest', desc:'· ZTM tiene sección de Testing (busca "Testing" en el curso). Vitest es el recomendado para Next.js. Un test básico: función que verifica que el voice coach arranca correctamente.'},
+        {bold:'Web APIs avanzadas: Audio, MediaRecorder', desc:'· Si ZTM tiene sección de "Browser APIs" o "Advanced JavaScript APIs", aquí está MediaRecorder. También en MDN: developer.mozilla.org/en-US/docs/Web/API/MediaRecorder · Gratis y completo.'}
+      ]
+    },
+    cs50:['Lunes: CS50 — Artificial Intelligence lecture (45 min) · Cómo CS50 explica IA en 2024. Compáralo mentalmente con Karpathy — CS50 da el "qué", Karpathy dio el "cómo desde adentro".','Miércoles: CS50 Short — "Search Algorithms in AI" (20 min) + "Machine Learning intro" (20 min) · Algoritmos que están detrás de sistemas de recomendación — base técnica del matching de rutas emocionales en ONTI.','Viernes: CS50 — Integración final parte 1: abre cualquier lecture de CS50 que quieras repasar (45 min). ¿Qué concepto de CS50 está directamente en el código de ONTI que construiste este sprint?'],
     cols:[
-      {badge:'pb-book',bl:'📚 Integrar',t:'Notas S1–S7: sin libro nuevo esta semana',ref:'Tus propias notas de las semanas anteriores · 1 hora el lunes antes de arrancar · Este documento es más valioso que cualquier libro',d:'Abre todo lo que anotaste en S1–S7. 1 hora. Una pregunta: ¿qué entiendo ahora de código, IA y mi empresa que no entendía hace 7 semanas? Escríbelo en un párrafo. Elon relee sus notas — la integración es donde el conocimiento se vuelve identidad.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Web APIs: MediaRecorder, Audio, Blobs · WebSockets básico',ref:'zerotomastery.io · Sección: "Browser APIs" o "Advanced JavaScript" · Busca: "MediaRecorder API", "Web Audio API" · Documentación oficial: developer.mozilla.org/en-US/docs/Web/API/MediaRecorder · Totalmente gratis en MDN',d:'MediaRecorder = grabar audio desde el micrófono del browser. Blob = el formato del archivo de audio grabado. Sin esto no hay Voice Coach. 3 días de ZTM (los primeros). Luego te enfocas en construir.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Testing básico: Vitest o Jest',ref:'zerotomastery.io · Sección: "Testing" · Vitest: vitest.dev (recomendado para Next.js) · Jest: jestjs.io · Tutorial: "Vitest + React Testing Library" en YouTube · Ambos son gratuitos y open source',d:'Un test es código que verifica que tu código funciona. Para el Voice Coach: un test que confirma que la grabación de audio arranca y para correctamente. Si el Voice Coach se rompe al actualizar otra parte de ONTI, el test te avisa antes de que lo note un usuario.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'Voice Coach prototipo 0: graba → transcribe → responde',ref:'Stack: MediaRecorder API (browser) + OpenAI Whisper API (transcripción, platform.openai.com) + Claude API (respuesta, console.anthropic.com) · Tutorial de referencia: "Build a Voice AI App with Next.js" en YouTube',d:'El loop completo esta semana: (1) botón para grabar en ONTI, (2) audio va a Whisper vía API → texto, (3) texto va a Claude → respuesta de voz de coach. No tiene que sonar bonito. Tiene que funcionar end-to-end.'}
+      {badge:'pb-book',bl:'📚 Integrar',t:'Notas S1–S7: sin libro nuevo esta semana',ref:'Tus propias notas de las 7 semanas anteriores · 1 hora el lunes antes de arrancar el día',d:'Abre todo lo que anotaste en S1–S7. 1 hora. Una pregunta: ¿qué entiendo ahora de código, IA y mi empresa que no entendía hace 7 semanas? Escríbelo en un párrafo. La integración es donde el conocimiento se vuelve identidad.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'Voice Coach prototipo 0: graba → transcribe → responde',ref:'Stack: MediaRecorder API (browser) + OpenAI Whisper API (platform.openai.com/docs) + Claude API (console.anthropic.com) · Tutorial referencia: "Build a Voice AI App with Next.js" en YouTube',d:'(1) Botón para grabar en ONTI → (2) audio va a Whisper API → texto → (3) texto va a Claude API → respuesta del coach. No tiene que sonar bonito. Tiene que funcionar end-to-end esta semana.'}
     ],
-    rhythm:['6:00–8:00 Build Voice Coach','9–12 Construcción ONTI','4pm ZTM Audio APIs','Lun/Mié/Vie 5:15–6pm CS50','8pm Integración y notas S1–S7'],
+    rhythm:['6:00–8:00 Build Voice Coach','9–12 Construcción ONTI','4pm ZTM TypeScript + Testing','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Integración notas S1–S7'],
     checks:[
       'Notas S1–S7 releídas — párrafo de integración escrito',
-      'ZTM MediaRecorder: grabación de audio desde browser funcionando',
-      'Whisper API conectada: audio → texto transcrito',
-      'Claude API conectada: texto → respuesta de coach generada',
-      'Loop completo end-to-end: graba → transcribe → responde',
-      'Al menos 1 test escrito para el voice coach',
-      'CS50: 3 sesiones completadas esta semana'
+      'ZTM TypeScript: tipos e interfaces en al menos 3 archivos de ONTI',
+      'ZTM Testing: al menos 2 tests escritos y pasando (Vitest o Jest)',
+      'MediaRecorder: grabación de audio desde browser de ONTI',
+      'Whisper API: audio → texto transcrito correctamente',
+      'Claude API: texto → respuesta de coach generada',
+      'Loop Voice Coach completo: graba → transcribe → responde',
+      'CS50: 3 sesiones completadas (AI, ML intro, repaso)'
     ],
-    output:'Voice Coach: graba → transcribe → responde. Loop completo funcionando en ONTI.'
+    output:'ZTM al 90%. Voice Coach: graba → transcribe → responde. TypeScript en ONTI.'
   },
 
   // ══════════════════ FASE 3 ══════════════════
   {
-    id:9, phase:3,
+    id:9, phase:3, pct:'90% → 93%',
     focus:'Auth + Stripe · ONTI puede cobrar · propósito estructural',
     tags:[{t:'ZTM Auth+Stripe',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
     quote:'"If your motives are pure and greater than yourself, the world will conspire in its subtle ways to help you." — Naval Ravikant (foreword de The Book of Elon)',
-    cal:'💳 Esta semana ONTI puede registrar usuarias y cobrarles $30/mes. Cuando auth + stripe funciona, tienes un negocio — no un prototipo. Frankl + Singer + Elon desde 3 ángulos distintos sobre el mismo principio.',
-    cs50:['Lunes: CS50 — "Security" lecture completa (45 min) · Passwords, hashing, SQL injection — directamente aplicable a tu sistema de auth de ONTI','Miércoles: CS50 Short — "OAuth" (20 min) + "Sessions and Cookies" repaso (20 min) · Cómo funciona "Login con Google" que quizás uses en ONTI','Viernes: CS50 — Reflexión: escribe cómo los conceptos de seguridad de CS50 aplicarán a ONTI con 100k usuarias'],
+    cal:'💳 Esta semana ONTI puede registrar usuarias y cobrarles $30/mes. Cuando auth + stripe funciona, tienes un negocio real — no un prototipo. ZTM tiene secciones de Auth y Payments — úsalas directamente.',
+    ztm:{
+      title:'ZTM esta semana — de 90% a 93%',
+      pct:'90% → 93%',
+      modules:[
+        {bold:'Autenticación con Clerk o Auth.js (sección ZTM)', desc:'· Registro, login, sesiones, perfil. Clerk (clerk.com) es el camino más rápido para ONTI: configurado en 30 min. ZTM puede tener una sección de "Authentication" — si está, úsala; si no, la documentación de Clerk es excelente.'},
+        {bold:'Pagos con Stripe + Subscriptions', desc:'· Sección de ZTM "Payments" o documentación oficial stripe.com/docs. Stripe maneja el cobro mensual de $30, renovación automática, cancelaciones. Con esto ONTI puede cobrar esta semana.'},
+        {bold:'Webhooks de Stripe', desc:'· Cómo Stripe le avisa a tu servidor cuando un pago ocurre para que actives el acceso. Esto conecta Stripe con Supabase: pago exitoso → usuaria con acceso activo.'}
+      ]
+    },
+    cs50:['Lunes: CS50 — "Security" lecture completa (45 min) · Passwords, hashing (bcrypt), SQL injection, XSS. Directamente aplicable a tu sistema de auth de ONTI con Clerk.','Miércoles: CS50 Short — "OAuth 2.0" (20 min) + "JWT" (20 min) · OAuth es el protocolo detrás de "Login con Google". JWT es el token que Clerk y Auth.js usan para verificar sesiones.','Viernes: CS50 — Reflexión de seguridad (45 min): ¿cómo protege ONTI los datos de 100k usuarias? Escribe el modelo de seguridad de ONTI en 1 página.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:"Man's Search for Meaning — Viktor Frankl",ref:"Autor: Viktor Frankl (neurólogo y psiquiatra vienés, sobreviviente del Holocausto) · Editorial: Beacon Press · Título original: 'Ein Psychologe erlebt das Konzentrationslager' · Kindle Amazon MX ~$150 MXN · 200 páginas · Publicado en 1946 · Uno de los libros más leídos del siglo XX",d:'Lee en 2 días — es corto e intenso. Frankl + Singer + Elon = mismo principio desde 3 ángulos: el propósito no es motivacional, es estructural. ONTI no vende meditación — vende reducción de sufrimiento con propósito claro. Ese lenguaje viene de Frankl.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Autenticación: Clerk o Auth.js con Next.js',ref:'Clerk: clerk.com (plan gratuito generoso) · Auth.js: authjs.dev (open source) · zerotomastery.io · Sección: "Authentication" · Tutorial recomendado: "Clerk + Next.js App Router" en YouTube de Clerk · Documentación oficial de Clerk: clerk.com/docs',d:'Clerk es el camino más rápido: registro, login, perfil, sesiones — configurado en 30 min. Auth.js es más flexible pero más complejo. Para ONTI en este sprint: Clerk. Cuando ONTI tenga 10k usuarias puedes migrar si necesitas.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Pagos: Stripe + Next.js + webhooks',ref:'Stripe: stripe.com (plan gratuito para desarrollo) · zerotomastery.io · Sección: "Payments" · Tutorial oficial: stripe.com/docs/billing/subscriptions/overview · Tutorial YouTube: "Stripe Subscriptions + Next.js" — hay varios buenos gratuitos',d:'Stripe maneja todo: cobro mensual de $30, renovación automática, cancelaciones, reembolsos. Webhooks = Stripe le avisa a tu servidor cuando un pago ocurre para que actives el acceso. Esta semana ONTI puede cobrar en modo test — el siguiente sprint activas producción.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'One-pager de ONTI versión Elon',ref:'Framework: The Book of Elon — "Fight for the Future" + "Be Useful" · Una hoja física, no un deck',d:'Una hoja. No un deck. Problema → Por qué ahora → Solución → Escala → Por qué tú. Si no cabe en una hoja, no lo entiendes suficiente. Esta hoja es tu VC pitch comprimido. Elon presenta así internamente antes de hacer el deck completo.'}
+      {badge:'pb-book',bl:'📚 Libro',t:"Man's Search for Meaning — Viktor Frankl",ref:'"Man\'s Search for Meaning" · Viktor Frankl · Beacon Press · Kindle ~$150 MXN · 200 páginas · Primera edición: 1946 · Uno de los libros más leídos del siglo XX',d:'Lee en 2 días. Frankl + Singer + Elon = mismo principio desde 3 ángulos: el propósito no es motivacional — es estructural. ONTI no vende meditación — vende reducción de sufrimiento con propósito claro. Este lenguaje viene de aquí.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'One-pager de ONTI versión Elon + Auth + Stripe funcionando',ref:'One-pager: una hoja física · Estructura: Problema → Por qué ahora → Solución → Escala → Por qué tú · Auth: clerk.com · Stripe: stripe.com',d:'Dos outputs esta semana: (1) Auth y Stripe funcionando — usuaria puede registrarse, suscribirse y acceder. (2) One-pager de ONTI en una hoja — si no cabe en una hoja, no lo entiendes suficiente.'}
     ],
-    rhythm:['6:00 Build ONTI auth','9–12 Construcción ONTI','4pm ZTM Auth + Stripe','Lun/Mié/Vie 5:15–6pm CS50','8pm Frankl'],
+    rhythm:['6:00 Build ONTI auth + stripe','9–12 Construcción ONTI','4pm ZTM Auth + Stripe','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Frankl'],
     checks:[
       "Man's Search for Meaning leído completo",
-      'Clerk (o Auth.js) funcionando: registro y login en ONTI',
+      'ZTM/Clerk: registro y login funcionando en ONTI',
       'Perfil de usuario guardado en Supabase al registrarse',
-      'Stripe conectado en test mode con suscripción mensual de $30',
-      'Flujo completo: usuaria se registra → paga → accede a ruta emocional',
+      'Stripe: suscripción mensual de $30 en test mode',
+      'Webhook de Stripe: pago → acceso activo en ONTI',
+      'Flujo completo: se registra → paga → accede a ruta emocional',
       'One-pager de ONTI terminado (1 hoja)',
-      'Pitch oral de 90 segundos practicado 5 veces',
-      'CS50: 3 sesiones completadas esta semana'
+      'Pitch oral de 90 seg practicado 5 veces',
+      'CS50: 3 sesiones (Security, OAuth/JWT, reflexión)'
     ],
-    output:'ONTI puede registrar usuarias y cobrar $30/mes. One-pager para VCs listo.'
+    output:'ZTM al 93%. ONTI puede registrar y cobrar. One-pager para VCs.'
   },
 
   {
-    id:10, phase:3,
+    id:10, phase:3, pct:'93% → 96%',
     focus:'Performance + PWA · historia como ventaja competitiva',
     tags:[{t:'ZTM PWA',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
     quote:'"Learn the lessons of history so we do not repeat the mistakes of the past." — Elon',
-    cal:'📱 ONTI tiene que sentirse como app nativa en el celular de una Yulie de 45 años en CDMX. Performance y PWA esta semana convierten tu web app en producto real. CS50 esta semana: enfoque en cómo los sistemas escalan.',
-    cs50:['Lunes: CS50 — "Scalability" lecture (45 min) · Load balancing, caching, cloud — cómo ONTI aguanta 100k usuarias sin caerse','Miércoles: CS50 Short — "HTTP" completo (20 min) + "DNS" (20 min) · Cómo funciona la web a nivel de red — por qué Vercel es rápido','Viernes: CS50 — Reflexión escrita: ¿qué necesitaría cambiar en la arquitectura de ONTI si tuviéramos 1 millón de usuarias? (45 min de pensar y escribir)'],
+    cal:'📱 ONTI tiene que sentirse como app nativa en el celular de una Yulie de 45 años. Performance y PWA esta semana convierten la web app en producto real. PWA = se instala como app, funciona offline, manda notificaciones diarias de meditación.',
+    ztm:{
+      title:'ZTM esta semana — de 93% a 96%',
+      pct:'93% → 96%',
+      modules:[
+        {bold:'Performance + Lighthouse optimization', desc:'· Sección de ZTM "Performance" o "Optimization". Lighthouse está en Chrome DevTools (F12 → Lighthouse). Meta para ONTI: score > 90 en mobile. Lazy loading, Image optimization, reducir JS innecesario.'},
+        {bold:'PWA: Service Worker + Web App Manifest', desc:'· Sección de ZTM "Progressive Web Apps". Service Worker = código que corre en background en el celular de la usuaria. Manifest = ícono y nombre al instalar. next-pwa en npm simplifica esto en Next.js.'},
+        {bold:'Push Notifications Web', desc:'· Cómo mandar notificaciones diarias de meditación. Requiere Service Worker. ZTM puede tenerlo en la sección de PWA o "Browser APIs".'}
+      ]
+    },
+    cs50:['Lunes: CS50 — Scalability avanzado (45 min) · CDNs, cache headers, database optimization. Cómo ONTI aguanta carga cuando llega a 10k usuarias al mismo tiempo.','Miércoles: CS50 Short — "Trees in CS" (20 min) + "Graphs" (20 min) · Estructuras de datos para sistemas de recomendación — base técnica del matching de rutas emocionales personalizadas en ONTI.','Viernes: CS50 — Integración 2: escribe cómo los conceptos de CS50 de esta semana (CDN, cache, árboles) aplican directamente a ONTI. Esto es pensar como Elon — conectar teoría con producción.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'The Lessons of History — Will y Ariel Durant (releer)',ref:'Autores: Will Durant y Ariel Durant · Editorial: Simon & Schuster · 128 páginas · Primera edición: 1968 · Ya lo leíste anteriormente — esta semana lo relees en 2 días · Elon lo recomienda explícitamente en su lista de libros',d:'Ya lo leíste. Réélo en 2 días con UNA sola pregunta: ¿qué ciclo histórico está viviendo el mercado de bienestar mental y restaurantes-tech en México ahora mismo? Tu respuesta es ventaja competitiva — la mayoría de founders no hace este ejercicio.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Performance: Lighthouse, lazy loading, Image Optimization, caching',ref:'zerotomastery.io · Sección: "Performance" o "Optimization" · Lighthouse: herramienta integrada en Chrome DevTools (F12 → Lighthouse) · Completamente gratis · Meta: score > 90 en mobile para ONTI',d:'Lighthouse mide 4 cosas: Performance, Accessibility, Best Practices, SEO. Score < 70 = usuarios que abandonan la app. Para ONTI en celular: lazy loading de imágenes, optimización de fonts, reducir JavaScript innecesario. Cada punto de score = retención de usuaria.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'PWA: Service Worker, Web App Manifest, offline, push notifications',ref:'zerotomastery.io · Sección: "Progressive Web Apps" · Documentación oficial: web.dev/progressive-web-apps (Google, gratis) · Tutorial: "Next.js PWA" con next-pwa en GitHub (pakeages: next-pwa)',d:'PWA = ONTI se instala en el celular como app nativa, funciona sin internet, puede mandar notificaciones diarias de meditación. Service Worker = código que corre en segundo plano en el celular de la usuaria. Manifest = el ícono y nombre que aparecen al instalar.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'Agente de calificación de leads en Appio + ONTI como PWA',ref:'Stack del agente: OpenAI API + WhatsApp Business API o Twilio · PWA: next-pwa (npm install next-pwa) + manifest.json en tu proyecto',d:'Agente que califica leads de restaurantes y agenda demos automáticamente — libera 5–10h/semana para ONTI. Y en paralelo: ONTI instalable como PWA en celular con notificación de meditación diaria.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'The Lessons of History — Will y Ariel Durant (releer)',ref:'Will y Ariel Durant · Simon & Schuster · 128 páginas · Ya lo leíste antes · Elon lo recomienda explícitamente en su lista en The Book of Elon',d:'Ya lo leíste. Réélo en 2 días con UNA sola pregunta: ¿qué ciclo histórico está viviendo el mercado de bienestar mental y restaurantes-tech en México ahora mismo? Tu respuesta es ventaja competitiva — la mayoría de founders no hace este ejercicio.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'ONTI como PWA + agente de calificación de leads en Appio',ref:'PWA: npm install next-pwa → configurar en next.config.js · Agente: OpenAI API + WhatsApp Business API o Twilio · Ambos en paralelo esta semana',d:'Dos outputs: (1) ONTI instalable en celular como PWA con notificación diaria de meditación. (2) Agente de Appio que califica leads entrantes automáticamente — libera 5–10h/semana para ONTI.'}
     ],
-    rhythm:['6:00 Build Appio agente','9–12 Build ONTI PWA + Performance','4pm ZTM Performance/PWA','Lun/Mié/Vie 5:15–6pm CS50','8pm Durant'],
+    rhythm:['6:00 Build Appio agente + ONTI PWA','9–12 Construcción ONTI','4pm ZTM Performance + PWA','Lun/Mié/Vie 4:30–5:15pm CS50','8pm Durant'],
     checks:[
       'The Lessons of History releído — ciclo histórico de tu mercado escrito',
-      'Lighthouse score de ONTI > 90 en mobile',
-      'ONTI instalable como PWA en celular (probado en tu teléfono)',
-      'Service Worker activo: ONTI carga offline al menos la pantalla principal',
-      'Push notification de meditación diaria configurada',
-      'Agente de calificación de leads funcionando en Appio',
-      'CS50: 3 sesiones completadas esta semana'
+      'ZTM Lighthouse: score de ONTI > 90 en mobile',
+      'ONTI instalable como PWA en tu celular (probado tú mismo)',
+      'Service Worker activo: ONTI carga offline la pantalla principal',
+      'Push notification de meditación diaria configurada y funcionando',
+      'Agente de calificación de leads de Appio funcionando',
+      'CS50: 3 sesiones (Scalability, Trees/Graphs, integración)'
     ],
-    output:'ONTI como PWA instalable en celular. Agente de leads de Appio funcionando.'
+    output:'ZTM al 96%. ONTI como PWA instalable en celular. Agente de leads en Appio.'
   },
 
   {
-    id:11, phase:3,
-    focus:'Estado global · ruta completa en producción · pitch filmado 10 veces',
+    id:11, phase:3, pct:'96% → 99%',
+    focus:'Estado global · ruta completa en producción · pitch filmado',
     tags:[{t:'ZTM State',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Libro',c:'wt-book'},{t:'Build',c:'wt-build'}],
     quote:'"I try to take the set of actions most likely to improve the probability that the future will be good." — Elon',
-    cal:'🌍 Esta semana ONTI tiene su primera ruta completa funcionando con usuarios reales. No prototipo — producto. Auth + pagos (S9) + PWA (S10) + estado global (S11) + voz = ONTI en producción.',
-    cs50:['Lunes: CS50 — "Artificial Intelligence: Search + Optimization" (45 min) · Algoritmos de búsqueda en IA — cómo ONTI podría recomendar rutas personalizadas','Miércoles: CS50 Short — "Trees" + "Graphs" (40 min) · Estructuras de datos para sistemas de recomendación — base técnica del matching de rutas emocionales','Viernes: CS50 — Integración final: ¿qué 3 conceptos de CS50 son más relevantes para ONTI? Escríbelo. Esta es tu auditoría de CS50.'],
+    cal:'🌍 Esta semana ONTI tiene su primera ruta completa con usuarios reales. No prototipo — producto. Auth + Stripe (S9) + PWA (S10) + estado global (S11) + voz = ONTI completo. ZTM casi terminado: 96→99%.',
+    ztm:{
+      title:'ZTM esta semana — de 96% a 99%',
+      pct:'96% → 99%',
+      modules:[
+        {bold:'Estado global: Zustand o Redux Toolkit', desc:'· Sección de ZTM "State Management". Zustand es el más simple (npm install zustand). Para ONTI con 28 rutas: el progreso de la usuaria, la ruta activa, el historial de meditación — todo en un store global.'},
+        {bold:'Módulos finales de ZTM', desc:'· Los últimos módulos del curso completo (Security, Performance avanzado, SEO, Deploy final). Ve a 1.5–2x los que ya dominas. El objetivo esta semana: 99% del curso completo.'},
+        {bold:'Repaso de secciones con huecos', desc:'· ¿Qué sección de ZTM sentiste que no quedó 100% clara? Esta semana es tu última oportunidad de repasar dentro del sprint.'}
+      ]
+    },
+    cs50:['Lunes: CS50 — Trees + AI Search (45 min) · Algoritmos de búsqueda en IA — cómo ONTI podría recomendar rutas personalizadas basadas en el historial de la usuaria.','Miércoles: CS50 — Final Project gallery (45 min) · cs50.harvard.edu/x/2024/gallery/ · Ve 3–4 proyectos finales de estudiantes. ¿Qué podrías construir ahora que no podrías hace 11 semanas?','Viernes: CS50 — Auditoría final: 3 conceptos de CS50 que están directamente en el código de ONTI. Escríbelos con el nombre del archivo y la línea de código donde aplican.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Libro',t:'What We Owe the Future — William MacAskill',ref:'Autor: William MacAskill (filósofo Oxford, co-fundador del movimiento Effective Altruism) · Editorial: Basic Books · Kindle Amazon MX ~$250 MXN · 352 páginas · Elon: "This is a close match for my philosophy." — citado explícitamente en The Book of Elon',d:'Marco para pensar en impacto generacional. ONTI no vende meditación — vende reducir sufrimiento humano a escala de millones durante generaciones. Este lenguaje viene de MacAskill. Al terminar escribe: la misión de ONTI en lenguaje de civilización (no de wellness app). Esa versión va en el pitch.'},
-      {badge:'pb-ztm',bl:'🟣 ZTM',t:'Estado global: Zustand o Redux Toolkit',ref:'Zustand: zustand-demo.pmnd.rs (más simple, recomendado para ONTI) · zerotomastery.io · Sección: "State Management" · Si no está en ZTM: tutorial "Zustand Tutorial" de Codevolution en YouTube (gratis) · npm install zustand',d:'ONTI tiene 28 rutas emocionales con progreso, historial y estado de usuario. Zustand = una tienda global de datos que todos los componentes de ONTI pueden leer y escribir. Sin estado global, el progreso de la usuaria se pierde al cambiar de pantalla.'},
-      {badge:'pb-build',bl:'📹 Pitch',t:'10 repeticiones filmadas del pitch de ONTI',ref:'Herramienta: cámara de celular o QuickTime · Sin guión después de la 3ra repetición · Objetivo final: 3 minutos · Estructura Elon: Problema → Por qué ahora → Solución → Traction → Escala → Por qué tú',d:'Grábate 10 veces esta semana. Cada vez más corto y más claro. Empieza con 10 min y llega a 3 min. Escúchate después de cada una. ¿Te mueve a ti? ¿Menciona misión de civilización (MacAskill) + defensibilidad técnica (Karpathy) + traction (restaurantes Appio + ONTI beta)?'},
-      {badge:'pb-build',bl:'🔨 Build',t:'ONTI: ruta "sanar relación con la madre" end-to-end en producción',ref:'Stack completo: Next.js + Supabase + Clerk + Stripe + Claude API + MediaRecorder · La ruta más completa que tienes diseñada · Para usuarios reales — no solo tú',d:'Pain point → selección de ruta → contenido de meditación → voice coach disponible → progreso guardado en Supabase → acceso solo para usuarias con Stripe activo. Una ruta completa con al menos 1 usuaria real (no tú) que la complete.'}
+      {badge:'pb-book',bl:'📚 Libro',t:'What We Owe the Future — William MacAskill',ref:'"What We Owe the Future" · William MacAskill, filósofo Oxford · Basic Books · Kindle ~$250 MXN · 352 páginas · Elon: "This is a close match for my philosophy." — citado explícitamente en The Book of Elon',d:'Marco para pensar en impacto generacional. Al terminar escribe: la misión de ONTI en lenguaje de civilización (no de wellness app). Esa versión va en tu pitch de VC.'},
+      {badge:'pb-build',bl:'📹 Pitch',t:'10 repeticiones filmadas + ruta completa en producción',ref:'Herramienta: cámara de celular · Estructura del pitch: Problema → Por qué ahora → Solución → Traction → Escala → Por qué tú · Meta: 3 minutos',d:'Grábate 10 veces esta semana. Escúchate después de cada una. Y en paralelo: ruta "sanar relación con la madre" completa en ONTI — pain point → meditación → voice coach → progreso guardado. Con al menos 1 usuaria real.'}
     ],
-    rhythm:['6:00 Build ONTI ruta completa','9–12 Construcción total','4pm ZTM Zustand','Lun/Mié/Vie 5:15–6pm CS50','8pm MacAskill','Vie+Sáb: pitch x5 cada día'],
+    rhythm:['6:00 Build ONTI ruta completa','9–12 Construcción total','4pm ZTM Zustand + módulos finales','Lun/Mié/Vie 4:30–5:15pm CS50','8pm MacAskill','Vie+Sáb: pitch x5 cada día'],
     checks:[
-      'What We Owe the Future leído completo',
-      'Misión de ONTI en lenguaje de civilización — escrita',
-      'ZTM Zustand: estado global funcionando en ONTI',
-      'Progreso de ruta emocional persiste entre sesiones',
+      'What We Owe the Future leído — misión de ONTI en lenguaje de civilización escrita',
+      'ZTM Zustand: estado global funcionando (ruta activa, progreso)',
+      'Progreso de ruta emocional persiste entre sesiones en Supabase',
+      'ZTM: 99% del curso completado',
       'Ruta "sanar relación con la madre" end-to-end en producción',
       'Al menos 1 usuaria real (no tú) completa la ruta',
-      'Video de pitch de 3 min grabado — 10 iteraciones hechas',
-      'CS50: 3 sesiones + auditoría de 3 conceptos clave escritos'
+      'Video de pitch de 3 min grabado — 10 iteraciones',
+      'CS50: 3 sesiones finales + auditoría de 3 conceptos en código'
     ],
-    output:'ONTI ruta completa con usuarios reales. Pitch de 3 min que funciona.'
+    output:'ZTM al 99%. ONTI ruta completa con usuarios reales. Pitch de 3 min que funciona.'
   },
 
   {
-    id:12, phase:3,
-    focus:'Semana de integración: el Elon de 35 que ahora eres',
-    tags:[{t:'Build',c:'wt-build'},{t:'CS50',c:'wt-cs'},{t:'Integración',c:'wt-book'}],
+    id:12, phase:3, pct:'99% → 100%',
+    focus:'Integración: el Elon de 35 que ahora eres · ZTM 100%',
+    tags:[{t:'ZTM 100%',c:'wt-ztm'},{t:'CS50',c:'wt-cs'},{t:'Build',c:'wt-build'},{t:'Integración',c:'wt-book'}],
     quote:'"I don\'t care about optimism or pessimism. Fuck that. We\'re going to get it done." — Elon Musk',
-    cal:'🏆 No hay curso nuevo. No hay libro nuevo. Solo construir, medir, integrar y firmar el contrato de los próximos 3 meses. CS50 esta semana: las últimas 3 sesiones más importantes del sprint. Las semanas de integración son donde el conocimiento se convierte en identidad.',
-    cs50:['Lunes: CS50 Final — repasa las lectures que más te costaron trabajo (45 min) · El punto de máxima comprensión es cuando puedes enseñarlo','Miércoles: CS50 — ve 1 proyecto final de un estudiante anterior que te inspire (45 min) · cs50.harvard.edu/x/2024/gallery/ · Qué podrías construir con todo lo que sabes ahora','Viernes: CS50 — Escribe: qué llevé de CS50 a Appio y ONTI que no tenía hace 12 semanas (45 min) · Este documento es tu integración de CS50'],
+    cal:'🏆 ZTM llega al 100% esta semana. CS50 últimas sesiones. No hay libro nuevo. Solo construir, medir, integrar y firmar el contrato de los próximos 3 meses.',
+    ztm:{
+      title:'ZTM esta semana — de 99% a 100%',
+      pct:'99% → 100%',
+      modules:[
+        {bold:'Último 1% de ZTM', desc:'· Los módulos finales que quedaron (si quedan). Vélos a 2x. El objetivo no es aprender algo nuevo — es cerrar el ciclo.'},
+        {bold:'CERTIFICADO COMPLETADO ✓', desc:'· zerotomastery.io genera tu certificado de completion al llegar al 100%. Guárdalo. Es evidencia de que en 12 semanas pasaste de 27% a 100% mientras construías dos empresas y aprendías IA.'},
+        {bold:'Repaso personal de los módulos más importantes', desc:'· ¿Cuáles fueron los módulos de ZTM que más impacto tuvieron en tu código? Anótalos — son los que le recomiendas a alguien en tu posición en 6 meses.'}
+      ]
+    },
+    cs50:['Lunes: CS50 — repasa la lecture que más te costó (45 min) · El punto de máxima comprensión es cuando puedes enseñarlo. ¿Puedes explicar Lecture X a alguien sin experiencia técnica?','Miércoles: CS50 — ve 1 proyecto final de un estudiante anterior que te inspire (45 min) · cs50.harvard.edu/x/2024/gallery/ · ¿Qué podrías construir ahora que no podrías en S1?','Viernes: CS50 — Auditoría completa (45 min): escribe qué llevaste de CS50 a ONTI y Appio que no tenías hace 12 semanas. Este documento cierra tu sprint de CS50.'],
     cols:[
-      {badge:'pb-book',bl:'📚 Integrar',t:'Releer highlights de S1–S11',ref:'Tus propias notas de las 11 semanas anteriores · 1 hora · Este es el ejercicio más valioso de todo el sprint',d:'No hay libro nuevo. Abre todo lo que anotaste. 1 hora. ¿Qué destruiste? ¿Qué construiste? ¿Qué piensas diferente sobre código, IA, tu empresa y tú mismo? Elon relee sus notas — la integración es donde el conocimiento se vuelve identidad.'},
-      {badge:'pb-build',bl:'⚡ Auditoría',t:'3 preguntas de Elon',ref:'Framework: The Book of Elon — "Ultra Hardcore Work" + "Take Responsibility" · Respóndelas por escrito, no mentalmente',d:'(1) ¿Qué construí en 12 semanas que no existía antes? — lista concreta. (2) ¿Cuál es mi velocidad de producto hoy vs S1? — número de deploys/semana. (3) ¿Qué haría Elon a los 35 con exactamente lo que tengo en mis manos ahora — Appio $40k MRR + ONTI con 1 ruta en producción?'},
-      {badge:'pb-build',bl:'📊 Medir',t:'Velocidad S12 vs S1 en números duros',ref:'Linear o Notion donde llevas el tracking desde S5 · Compara semana 1 vs semana 12 · Números — no narrativa',d:'Deploys/semana. Features en producción. Agentes funcionando en Appio. Usuarios de ONTI. MRR actual. Score de Lighthouse. Tiempo de deploy. Todos los números que mediste en S5. La verdad siempre está en los números.'},
-      {badge:'pb-build',bl:'🔨 Build',t:'Roadmap S13–S24: tu nuevo contrato firmado',ref:'Una hoja física — no un Notion infinito · Firma con tu nombre y la fecha de hoy · Ponla donde la veas todos los días',d:'Una hoja. 3 cosas que construyes en los próximos 3 meses. 3 habilidades que profundizas. MRR objetivo de Appio. Usuarios objetivo de ONTI. Fecha de siguiente ronda (si aplica). Firma con fecha. Este es tu contrato contigo mismo.'}
+      {badge:'pb-book',bl:'📚 Integrar',t:'Releer highlights de S1–S11',ref:'Tus propias notas de las 11 semanas · 1 hora el lunes',d:'No hay libro nuevo. Abre todo lo que anotaste. ¿Qué destruiste? ¿Qué construiste? ¿Qué piensas diferente sobre código, IA, tu empresa y tú mismo?'},
+      {badge:'pb-build',bl:'⚡ Auditoría',t:'3 preguntas de Elon respondidas por escrito',ref:'Framework: The Book of Elon — "Ultra Hardcore Work" + "Take Responsibility"',d:'(1) ¿Qué construí en 12 semanas que no existía? — lista concreta. (2) ¿Cuál es mi velocidad de producto hoy vs S1? — número de deploys. (3) ¿Qué haría Elon a los 35 con lo que tengo ahora — Appio $40k MRR + ONTI con 1 ruta + ZTM 100% + Karpathy completo?'},
+      {badge:'pb-build',bl:'📊 Medir',t:'Velocidad S12 vs S1 en números duros',ref:'Linear o Notion donde llevas el tracking desde S5',d:'Deploys/semana. Features en producción. Agentes en Appio. Usuarios de ONTI. MRR. Lighthouse score. Tiempo de deploy. Números — no narrativa.'},
+      {badge:'pb-build',bl:'🔨 Build',t:'Roadmap S13–S24: tu nuevo contrato firmado',ref:'Una hoja física · Firma con tu nombre y fecha de hoy · Ponla donde la veas cada mañana',d:'Una hoja. 3 cosas que construyes. 3 habilidades que profundizas. MRR objetivo. Usuarios objetivo. Fecha de siguiente ronda. Firma.'}
     ],
-    rhythm:['6:00–9:00 Build sin interrupciones','1h de integración y notas','Lun/Mié/Vie 5:15–6pm CS50 últimas sesiones','Viernes: roadmap completo + firma'],
+    rhythm:['6:00–9:00 Build sin interrupciones','1h de integración y notas','Lun/Mié/Vie 4:30–5:15pm CS50 últimas sesiones','Viernes: roadmap + firma'],
     checks:[
-      'Highlights de S1–S11 releídos y conectados en un párrafo',
+      'ZTM: 100% completado — certificado descargado ✓',
+      'CS50: 3 sesiones finales + documento de cierre escrito',
+      'Highlights S1–S11 releídos y conectados',
       '3 preguntas de Elon respondidas por escrito',
       'Velocidad S12 vs S1 medida en números concretos',
-      'Lista de lo que construí que no existía hace 12 semanas',
+      'Lista de lo construido que no existía hace 12 semanas',
       'Roadmap S13–S24 en una hoja firmada con fecha',
-      'CS50: 3 sesiones finales completadas — documento de integración escrito',
       'Una frase que describe quién eres que no existía hace 12 semanas'
     ],
-    output:'Roadmap S13–S24 firmado. Una frase. Velocidad 3–5x vs S1.'
+    output:'ZTM 100% ✓. Roadmap S13–S24 firmado. Una frase. Velocidad 3–5x vs S1.'
   }
 ];
 
@@ -626,17 +772,18 @@ function tc(el){el.classList.toggle('done');save();}
 function save(){
   const s={};
   document.querySelectorAll('.check-row').forEach(r=>{s[r.dataset.key]=r.classList.contains('done');});
-  try{localStorage.setItem('elon_v4',JSON.stringify(s));}catch(e){}
+  try{localStorage.setItem('elon_v5',JSON.stringify(s));}catch(e){}
 }
 function load(){
   try{
-    const s=JSON.parse(localStorage.getItem('elon_v4')||'{}');
+    const s=JSON.parse(localStorage.getItem('elon_v5')||'{}');
     document.querySelectorAll('.check-row').forEach(r=>{if(s[r.dataset.key])r.classList.add('done');});
   }catch(e){}
 }
 
 W.forEach(w=>{
   const tags=w.tags.map(t=>`<span class="wtag ${t.c}">${t.t}</span>`).join('');
+  const ztmModules=w.ztm.modules.map(m=>`<div class="ztm-module"><strong>${m.bold}</strong> — ${m.desc}</div>`).join('');
   const cols=w.cols.map(c=>`
     <div class="pillar">
       <div class="pillar-top"><span class="pillar-badge ${c.badge}">${c.bl}</span></div>
@@ -657,16 +804,26 @@ W.forEach(w=>{
     <div class="week" id="w${w.id}">
       <div class="week-head" onclick="tw(${w.id})">
         <div class="wk-num ${wCls[w.phase]}">S${w.id}</div>
-        <div class="wk-focus">${w.focus}</div>
+        <div class="wk-center">
+          <div class="wk-focus">${w.focus}</div>
+          <div class="wk-progress">ZTM ${w.pct}</div>
+        </div>
         <div class="wk-tags">${tags}</div>
         <div class="wk-chevron">▼</div>
       </div>
       <div class="week-body">
         <div class="elon-quote">${w.quote}</div>
         ${calHTML}
+        <div class="ztm-section">
+          <div class="ztm-sec-title">
+            <span>🟣 ZTM esta semana</span>
+            <span class="ztm-sec-pct">${w.ztm.pct}</span>
+          </div>
+          <div class="ztm-sec-modules">${ztmModules}</div>
+        </div>
         <div class="pillars">${cols}</div>
         <div class="cs50-block">
-          <div class="cs50-title">🔴 CS50 esta semana — 3 sesiones de 45 min (Lun / Mié / Vie)</div>
+          <div class="cs50-title">🔴 CS50 esta semana — 3 sesiones de 45 min · Lunes · Miércoles · Viernes</div>
           <div class="cs50-sessions">${cs50HTML}</div>
         </div>
         <div class="rhythm-label">Ritmo diario sugerido</div>
